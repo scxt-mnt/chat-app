@@ -19,12 +19,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     userData = toJson.data;
     console.log(toJson.msg)
 
-    if(userData.data){
-    userData.forEach((field) => {
+    if(userData){
+        console.log(userData)
+    userData.map((field) => {
         const cardElement = document.createElement("div");
+
         cardElement.className = "accountCard" ;
-        cardElement.textContent = field;
-        parentCard.appendChild(cardElement.name);
+
+        cardElement.textContent = `${field.name} ${field.lastName}`;
+
+        parentCard.appendChild(cardElement);
     })
 }
 })
