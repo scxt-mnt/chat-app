@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const cardElement = document.createElement("div");
         cardElement.className = "accountCard" ;
         cardElement.textContent = field;
-        parentCard.appendChild(cardElement);
+        parentCard.appendChild(cardElement.name);
     })
 }
 })
