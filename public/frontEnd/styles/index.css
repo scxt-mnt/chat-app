@@ -40,4 +40,10 @@ body {
     margin-top: 2rem;
     box-shadow: -2px 2px 20px -9px rgba(0, 0, 0, 0.62);
     padding-left: 2rem;
+    flex-direction: row;
+    gap: 10px;
+}
+.profile{
+    height: 2rem;
+    border-radius: 100vw;
 }

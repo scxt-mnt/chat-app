@@ -19,18 +19,29 @@ document.addEventListener("DOMContentLoaded", async () => {
     userData = toJson.data;
     console.log(toJson.msg)
 
-    if(userData){
+    if (userData) {
         console.log(userData)
-    userData.map((field) => {
-        const cardElement = document.createElement("div");
+        userData.map((field) => {
+            const nameElement = document.createElement("h3");
+            const imageElement = document.createElement("img")
+            const containerCard = document.createElement("div")
 
-        cardElement.className = "accountCard" ;
+            imageElement.src = field.ProfileLink;
 
-        cardElement.textContent = `${field.name} ${field.lastName}`;
 
-        parentCard.appendChild(cardElement);
-    })
-}
+
+            containerCard.className = "accountCard";
+            imageElement.className = "profile";
+
+            nameElement.textContent = `${field.name} ${field.lastName}`;
+
+            parentCard.appendChild(containerCard);
+            containerCard.appendChild(imageElement)
+            containerCard.appendChild(nameElement)
+
+
+        })
+    }
 })
 
 
