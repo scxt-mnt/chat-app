@@ -19,7 +19,8 @@ forms.addEventListener("submit", async (e) => {
                 body: JSON.stringify({
                     user: userContent,
                     pass: passContent
-                })
+                }),
+                credentials: "include"
             })
             const toJson = await fetchUrl.json();
             if (toJson.status === 401) return console.log(toJson.msg);
