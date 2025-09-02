@@ -2,7 +2,8 @@ import express, { urlencoded } from 'express';
 import dotenv from 'dotenv';
 import mysql from "mysql";
 import cors from 'cors';
-
+import jwt from 'jsonwebtoken'
+ 
 dotenv.config();
 const app = express();
 app.use(cors({
@@ -10,7 +11,6 @@ app.use(cors({
     credentials: true
 }));
 app.use(express.json());
-app.use(express.static("public"));
 app.use(express.urlencoded({extended: true}));
 
 
@@ -50,8 +50,8 @@ app.post('/login', (req, res) => {
         const query = "SELECT * FROM user WHERE name = ? AND lastName = ?"
         db.query(query, [userData, passData], (err, result) => {
 
-            if(result.length === 0) return res.status(401).send({msg: "authentication error"})
-            res.status(200).send({msg: "login successfully"});
+            if(result.length === 0) return res.status(401).send({msg: "authentication error", data: {islog: false}})
+            res.status(200).send({msg: "login successfully", data: {islog: true}});
         })
     }
 })
