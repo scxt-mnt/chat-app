@@ -1,15 +1,33 @@
 const username = document.querySelector(".username");
 const password = document.querySelector(".password");
 const main = document.querySelector(".main");
+const forms = document.querySelector(".forms")
 
 const div = document.createElement("h1");
-div.className = "div"
-username.addEventListener("input", () => {
+forms.addEventListener("submit", async (e) => {
+    e.preventDefault();
     const userContent = username.value
     const passContent = password.value;
 
-    
-
+    if (userContent  && passContent) {
+        try {
+            const fetchUrl = await fetch("http://localhost:8080/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    user: userContent,
+                    pass: passContent
+                })
+            })
+            const toJson = await fetchUrl.json();
+            if (toJson.status === 401) return console.log(toJson);
+            console.log(toJson.msg)
+        } catch (e) {
+            console.log(e);
+        }
+    }
 })
 
 
