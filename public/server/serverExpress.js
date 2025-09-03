@@ -28,8 +28,12 @@ app.listen(PORT, () => { console.log("listening to: " + PORT); });
 
 
 app.get('/accounts', (req, res) => {
-    const query = "SELECT * FROM user"
-    db.query(query, (err, result) => {
+     const cookie = req.cookies.token
+     const token = jwt.verify(cookie, SECRET);
+
+
+    const query = "SELECT * FROM user WHERE id != ?"
+    db.query(query,[token.id], (err, result) => {
 
         if (err) return res.status(401).send("cannot fetch");
 
@@ -43,6 +47,8 @@ app.get('/accounts', (req, res) => {
         }
     })
 })
+
+// login
 
 app.post('/login', (req, res) => {
     const userData = req.body.user
@@ -64,7 +70,7 @@ app.post('/login', (req, res) => {
                 maxAge: 1000 * 60 * 60
             })
 
-            return res.status(200).send({ msg: "login successfully", data: { islog: true } });
+            res.status(200).send({ msg: "login successfully"});
 
         })
     }
