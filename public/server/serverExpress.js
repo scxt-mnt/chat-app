@@ -26,23 +26,22 @@ const db = mysql.createPool({
 
 const PORT = process.env.SERVER_PORT;
 const SECRET = process.env.SECRET;
-app.listen(PORT, () => { console.log("listening to: " + PORT); });
+app.listen(PORT, "127.0.0.1", () => { console.log("listening to: " + PORT); });
 
-app.get('/accounts', (req, res) => {
+app.get('/login', (req, res) => {
     const cookie = req.cookies.token
+
+    if(!cookie) return console.log("no data")
     if (cookie) {
         const token = jwt.verify(cookie, SECRET);
         const query = "SELECT * FROM user WHERE id != ?"
         db.query(query, [token.id], (err, result) => {
-
             const user = result[0]
-
             if (!user) {
                 return res.status(401).send({ msg: "failed to fetch", isLog: false })
             }
 
             if (user) {
-                console.log(result)
                 res.status(200).send({ msg: "successfully fetched account", data: result, isLog: true });
             }
         })
@@ -60,22 +59,46 @@ app.post('/login', (req, res) => {
     if (userData && passData) {
         const query = "SELECT * FROM user WHERE name = ? AND lastName = ?"
         db.query(query, [userData, passData], (err, result) => {
-            if(err) return console.log(e)
-
-            if (result.length === 0) { return res.status(401).send({ msg: "authentication error" }) }
-
+            if (err) return console.log(err)
             const user = result[0];
 
-            const token = jwt.sign({ id: user.id }, SECRET, { expiresIn: "1h" })
-            res.cookie("token", token, {
-                httpOnly: true,
-                secure: false,
-                sameSite: 'lax',
-                maxAge: 1000 * 60 * 60
-            })
-            res.status(200).send({ msg: "login successfully" });
 
+            if (!user) { return res.status(401).send({ msg: "authentication error" }) }
+
+
+            if (user) {
+                const token = jwt.sign({ id: user.id }, SECRET, { expiresIn: "1h" })
+                res.cookie("token", token, {
+                    httpOnly: true,
+                    secure: false,
+                    sameSite: 'lax',
+                    maxAge: 1000 * 60 * 60
+                })
+                res.status(200).send({ msg: "login successfully" });
+            }
         })
     }
 })
 
+// GET details
+app.get('/get-Details', (req, res) => {
+    const cookie = req.cookies.token
+    if (!cookie) {
+        return res.status(401).send({ msg: "no token" })
+    }
+    if (cookie) {
+        const token = jwt.verify(cookie, SECRET);
+        const query = "SELECT * FROM user WHERE id = ?"
+        db.query(query, [token.id], (err, result) => {
+            if (err) return console.log(err);
+            const user = result[0]
+            if (!token) {
+                return res.status(401).send({ msg: "no account fetched" })
+            }
+            if (user) {
+                res.status(200).send({ msg: "succesfully fetched data", data: {imgLink: user.ProfileLink, name: user.name, lastName: user.lastName}  })
+            }
+        })
+    }
+
+})

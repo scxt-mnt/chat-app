@@ -11,7 +11,7 @@ forms.addEventListener("submit", async (e) => {
 
     if (userContent  && passContent) {
         try {
-            const fetchUrl = await fetch("http://localhost:8080/login", {
+            const fetchUrl = await fetch("http://127.0.0.1:8080/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -28,6 +28,9 @@ forms.addEventListener("submit", async (e) => {
             if(fetchUrl.status === 200){
             console.log(toJson.msg)
             window.location.href = "../index.html"
+
+            const getDetails = await fetch("http://127.0.0.1:8080/get-Details");
+            const data = await getDetails.json()
         }
         } catch (e) {
             console.log(e);

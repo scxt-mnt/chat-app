@@ -12,8 +12,13 @@ body {
 }
 
 .nav {
+    display: flex;
     background-color: rgb(131, 124, 124);
     flex-grow: 1;
+    align-items: center;
+    height: 0;
+    padding-left: 1rem;    
+    gap: 5px;
 }
 
 .userHead {
@@ -46,4 +51,14 @@ body {
 .profile{
     height: 2rem;
     border-radius: 100vw;
+}
+
+.profileImage{
+    height: 2rem;
+    border-radius: 100vh;
+}
+
+.profileName{
+    font-size: 1.2rem;
+    width: auto;
 }
