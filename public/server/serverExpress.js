@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import mysql from "mysql";
 import cors from 'cors';
 import jwt from 'jsonwebtoken'
-
+import cookieParser from 'cookie-parser';
 dotenv.config();
 const app = express();
 app.use(cors({
@@ -12,7 +12,7 @@ app.use(cors({
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+app.use(cookieParser());
 
 
 const db = mysql.createPool({
@@ -22,31 +22,38 @@ const db = mysql.createPool({
     database: "mychatapp"
 })
 
+
+
 const PORT = process.env.SERVER_PORT;
 const SECRET = process.env.SECRET;
 app.listen(PORT, () => { console.log("listening to: " + PORT); });
 
-
 app.get('/accounts', (req, res) => {
-     const cookie = req.cookies.token
-     const token = jwt.verify(cookie, SECRET);
+    const cookie = req.cookies.token
 
+    if (!cookie) {
+        return console.log("no cookie");
+    }
+    if (cookie) {
+        const token = jwt.verify(cookie, SECRET);
+        const query = "SELECT * FROM user WHERE id != ?"
+        db.query(query, [token.id], (err, result) => {
 
-    const query = "SELECT * FROM user WHERE id != ?"
-    db.query(query,[token.id], (err, result) => {
+            const user = result[0]
 
-        if (err) return res.status(401).send("cannot fetch");
+            if (users) {
+                return res.status(401).send({ msg: "failed to fetch", isLog: false })
+            }
 
-        if (result.length === 0) {
-            return console.log("failed to fetch")
-        }
+            if (user) {
+                console.log(result)
+                res.status(200).send({ msg: "successfully fetched account", data: result, isLog: true });
+            }
+        })
+    }
 
-        if (result) {
-            console.log(result)
-            res.status(200).send({ msg: "successfully fetched account", data: result });
-        }
-    })
-})
+}
+)
 
 // login
 
@@ -57,8 +64,9 @@ app.post('/login', (req, res) => {
     if (userData && passData) {
         const query = "SELECT * FROM user WHERE name = ? AND lastName = ?"
         db.query(query, [userData, passData], (err, result) => {
+            if(err) return console.log(e)
 
-            if (result.length === 0) return res.status(401).send({ msg: "authentication error", data: { islog: false } })
+            if (result.length === 0) { return res.status(401).send({ msg: "authentication error" }) }
 
             const user = result[0];
 
@@ -69,8 +77,7 @@ app.post('/login', (req, res) => {
                 sameSite: 'lax',
                 maxAge: 1000 * 60 * 60
             })
-
-            res.status(200).send({ msg: "login successfully"});
+            res.status(200).send({ msg: "login successfully" });
 
         })
     }

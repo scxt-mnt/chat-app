@@ -23,10 +23,12 @@ forms.addEventListener("submit", async (e) => {
                 credentials: "include"
             })
             const toJson = await fetchUrl.json();
-            if (toJson.status === 401) return console.log(toJson.msg);
-            if(toJson.status === 200)
+            if (fetchUrl.status === 401) return console.log(toJson.msg);
+            
+            if(fetchUrl.status === 200){
             console.log(toJson.msg)
-            window.location.href = "/public/frontEnd/components/index.html"
+            window.location.href = "../index.html"
+        }
         } catch (e) {
             console.log(e);
         }
