@@ -30,10 +30,6 @@ app.listen(PORT, () => { console.log("listening to: " + PORT); });
 
 app.get('/accounts', (req, res) => {
     const cookie = req.cookies.token
-
-    if (!cookie) {
-        return console.log("no cookie");
-    }
     if (cookie) {
         const token = jwt.verify(cookie, SECRET);
         const query = "SELECT * FROM user WHERE id != ?"
@@ -41,7 +37,7 @@ app.get('/accounts', (req, res) => {
 
             const user = result[0]
 
-            if (users) {
+            if (!user) {
                 return res.status(401).send({ msg: "failed to fetch", isLog: false })
             }
 

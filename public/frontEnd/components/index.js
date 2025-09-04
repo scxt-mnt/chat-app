@@ -8,7 +8,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const url = await fetch("http://localhost:8080/accounts", {
         method: "GET",
-        headers: { Accept: "application/json" }
+        headers: { Accept: "application/json" },
+        credentials: "include"
     })
     const toJson = await url.json();
 
