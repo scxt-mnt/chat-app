@@ -61,9 +61,9 @@ body {
 
 .chatSection {
     display: flex;
-    justify-content: start;
+    justify-content: end;
     align-items: end;
-    flex-direction: column;
+    flex-direction: column-reverse;
     margin-right: 10px;
     gap: 1rem;
     overflow-y: auto;
