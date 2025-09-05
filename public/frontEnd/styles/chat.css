@@ -61,11 +61,12 @@ body {
 
 .chatSection {
     display: flex;
-    justify-content: end;
+    justify-content: start;
     align-items: end;
     flex-direction: column;
     margin-right: 10px;
     gap: 1rem;
+    overflow-y: auto;
 }
 
 .senderMessage {
