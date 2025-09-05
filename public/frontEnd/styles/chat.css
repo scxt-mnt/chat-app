@@ -1,24 +1,23 @@
-body{
+body {
     margin: 0;
     padding: 0;
 }
-.main{
+
+.main {
     width: 100vw;
     height: 100vh;
     display: grid;
-    grid-template-rows: 1fr 80px ;
+    grid-template-rows: 1fr 80px;
 }
 
-.chat-section{
-   
+
+.message-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.message-section{
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.imageButton{
+.imageButton {
     height: auto;
     background-color: transparent;
     border: 1px solid rgb(136, 133, 133);
@@ -28,7 +27,8 @@ body{
     justify-content: center;
     margin-left: 1.5rem;
 }
-.messageInput{
+
+.messageInput {
     height: 2rem;
     padding: 4px 3rem 1px 1.5rem;
     border-radius: 20px;
@@ -38,7 +38,7 @@ body{
     border: 0.1px solid rgb(168, 168, 168);
 }
 
-.sendButton{
+.sendButton {
     height: auto;
     border-radius: 100%;
     padding: 5px;
@@ -46,7 +46,30 @@ body{
     background-color: transparent;
 }
 
-.messageInput:focus{
-    border: 1px solid rgb(119, 119, 129);
+.messageInput:focus {
+    border: 1px solid rgb(87, 87, 97);
 }
 
+.messageBox, .senderMessage {
+    height: auto;
+    width: auto;
+    max-width: 12rem;
+    padding: 5px 20px 5px 20px;
+    background-color: rgb(171, 190, 187);
+    border-radius: 1rem;
+}
+
+.chatSection {
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    flex-direction: column;
+    margin-right: 10px;
+    gap: 1rem;
+}
+
+.senderMessage {
+    align-self: start;
+    margin-left: 1rem;
+    background-color: rgb(128, 161, 156) ;
+}
