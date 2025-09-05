@@ -103,22 +103,25 @@ app.get('/get-Details', (req, res) => {
                 return res.status(401).send({ msg: "no account fetched" })
             }
             if (user) {
-                res.status(200).send({ msg: "succesfully fetched data", data: {imgLink: user.ProfileLink, name: user.name, lastName: user.lastName, id: user}  })
+                res.status(200).send({ msg: "succesfully fetched data", data: {imgLink: user.ProfileLink, name: user.name, lastName: user.lastName, id: user.id}  })
             }
         })
     }
 })
+// websocket
+
+const users = {}
 
 io.on("connection", (socket) => {
     console.log("user connected " + socket.id)
 
     socket.on("userId", (userId) => {
-        console.log(userId)
+        users[userId] = socket.id
     }) 
 
-    socket.on("message", (data) => {
+    socket.on("message", (data, targetUserId) => {
         console.log("message received " + data)
-        io.emit("feedback",data)
+        io.to(users[targetUserId]).emit("feedback", data)
     })
 })
 
