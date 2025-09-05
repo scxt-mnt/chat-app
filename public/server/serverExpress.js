@@ -1,9 +1,11 @@
-import express, { urlencoded } from 'express';
+import express from 'express';
 import dotenv from 'dotenv';
 import mysql from "mysql";
 import cors from 'cors';
 import jwt from 'jsonwebtoken'
 import cookieParser from 'cookie-parser';
+import { Server } from 'socket.io';
+import http from "http"
 dotenv.config();
 const app = express();
 app.use(cors({
@@ -13,7 +15,13 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-
+const server = http.createServer(app);
+const io = new Server(server, {
+        cors: {
+        origin: "http://127.0.0.1:5501",
+        credentials: true
+    }}
+);
 
 const db = mysql.createPool({
     host: "localhost",
@@ -26,7 +34,7 @@ const db = mysql.createPool({
 
 const PORT = process.env.SERVER_PORT;
 const SECRET = process.env.SECRET;
-app.listen(PORT, "127.0.0.1", () => { console.log("listening to: " + PORT); });
+server.listen(PORT, "127.0.0.1", () => { console.log("listening to: " + PORT); });
 
 app.get('/login', (req, res) => {
     const cookie = req.cookies.token
@@ -99,5 +107,13 @@ app.get('/get-Details', (req, res) => {
             }
         })
     }
+
+})
+
+io.on("connection", (socket) => {
+    console.log("user connected " + socket.id)
+    socket.on("message", (data) => {
+        console.log("message received " + data)
+    })
 
 })

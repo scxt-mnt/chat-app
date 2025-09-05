@@ -8,6 +8,7 @@ body {
     height: 100vh;
     display: grid;
     grid-template-rows: 1fr 80px;
+    overflow: hidden;
 }
 
 
@@ -44,6 +45,8 @@ body {
     padding: 5px;
     border: none;
     background-color: transparent;
+    cursor: pointer;
+
 }
 
 .messageInput:focus {
@@ -73,4 +76,8 @@ body {
     align-self: start;
     margin-left: 1rem;
     background-color: rgb(128, 161, 156) ;
+}
+
+.sendButton:active{
+    background-color: rgb(175, 171, 171);
 }
