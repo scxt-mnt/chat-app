@@ -52,8 +52,14 @@ document.addEventListener("DOMContentLoaded", async () => {
         
             const containerCard = document.createElement("div")
 
-            createElement("img", "profile", containerCard, (field.ProfileLink ? field.ProfileLink :  "no content") )
+            containerCard.addEventListener("click", () => {
+                 window.location.href = `./Chat/chat-page.html?userId=${field.id}`                
+            })
 
+
+            createElement("img", "profile", containerCard, (field.ProfileLink ? field.ProfileLink :  "no content"))
+            containerCard.setAttribute("user-id", field.id)
+            
 
             containerCard.className = "accountCard";
 
