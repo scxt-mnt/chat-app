@@ -36,12 +36,11 @@ app.get('/login', (req, res) => {
         const token = jwt.verify(cookie, SECRET);
         const query = "SELECT * FROM user WHERE id != ?"
         db.query(query, [token.id], (err, result) => {
-            const user = result[0]
-            if (!user) {
+            if (!result) {
                 return res.status(401).send({ msg: "failed to fetch", isLog: false })
             }
 
-            if (user) {
+            if (result) {
                 res.status(200).send({ msg: "successfully fetched account", data: result, isLog: true });
             }
         })

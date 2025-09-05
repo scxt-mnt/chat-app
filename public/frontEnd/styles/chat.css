@@ -1,0 +1,52 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.main{
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr 80px ;
+}
+
+.chat-section{
+   
+}
+
+.message-section{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.imageButton{
+    height: auto;
+    background-color: transparent;
+    border: 1px solid rgb(136, 133, 133);
+    padding: 3px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    margin-left: 1.5rem;
+}
+.messageInput{
+    height: 2rem;
+    padding: 4px 3rem 1px 1.5rem;
+    border-radius: 20px;
+    outline: none;
+    border: none;
+    background-color: rgb(255, 249, 249);
+    border: 0.1px solid rgb(168, 168, 168);
+}
+
+.sendButton{
+    height: auto;
+    border-radius: 100%;
+    padding: 5px;
+    border: none;
+    background-color: transparent;
+}
+
+.messageInput:focus{
+    border: 1px solid rgb(119, 119, 129);
+}
+
