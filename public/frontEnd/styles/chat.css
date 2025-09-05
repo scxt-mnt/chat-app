@@ -66,7 +66,7 @@ body {
     display: flex;
     justify-content: end;
     align-items: end;
-    flex-direction: column-reverse;
+    flex-direction: column;
     margin-right: 10px;
     gap: 1rem;
     overflow-y: auto;

@@ -114,6 +114,10 @@ io.on("connection", (socket) => {
     console.log("user connected " + socket.id)
     socket.on("message", (data) => {
         console.log("message received " + data)
+
+        io.emit("feedback",data)
     })
 
+
 })
+
