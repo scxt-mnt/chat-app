@@ -111,16 +111,26 @@ body {
 }
 
 .navButton:focus .navLine2 {
-        transform: rotate(0deg);
-        transition: 0.5s;
+    transform: rotate(0deg);
+    transition: 0.5s;
 }
 
-.profileNav{
+.profileNav {
     width: 11rem;
     height: 2.8rem;
     position: absolute;
     right: 10px;
     border-radius: 100vw;
-    border: 1px solid grey;
+    border: 0.2px solid rgb(173, 164, 164);
     display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.userProfile {
+    height: 2rem;
+    width: 2rem;
+    margin-left: 10px;
+    border-radius: 100vh;
+    border: none;
 }
