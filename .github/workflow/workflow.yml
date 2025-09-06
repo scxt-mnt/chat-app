@@ -1,0 +1,27 @@
+name: chat-app workflow
+
+on:
+  push: 
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+        matrix:
+            node-version: [22.x]
+      
+    steps: 
+      - name: clone repo 
+        uses: actions/checkout@v4
+
+      - name: install node 
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }} 
+
+      - name: installing npm 
+        uses: npm install
+
+      - name:  start to build
+        uses: npm run build
