@@ -7,7 +7,7 @@ body {
     width: 100vw;
     height: 100vh;
     display: grid;
-    grid-template-rows: 1fr 80px;
+    grid-template-rows: 65px 1fr 80px;
     overflow: hidden;
 }
 
@@ -53,7 +53,8 @@ body {
     border: 1px solid rgb(87, 87, 97);
 }
 
-.messageBox, .senderMessage {
+.messageBox,
+.senderMessage {
     height: auto;
     width: auto;
     max-width: 12rem;
@@ -75,9 +76,51 @@ body {
 .senderMessage {
     align-self: start;
     margin-left: 1rem;
-    background-color: rgb(128, 161, 156) ;
+    background-color: rgb(128, 161, 156);
 }
 
-.sendButton:active{
+.sendButton:active {
     background-color: rgb(175, 171, 171);
+}
+
+.navigationBar {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.navLine1,
+.navLine2 {
+    width: 2.5px;
+    height: 20px;
+    background-color: rgb(165, 157, 157);
+}
+
+.navButton {
+    margin-left: 20px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.navLine2 {
+    width: 20px;
+    height: 2.5px;
+    transform: rotate(90deg);
+    transition: 0.5s;
+}
+
+.navButton:focus .navLine2 {
+        transform: rotate(0deg);
+        transition: 0.5s;
+}
+
+.profileNav{
+    width: 11rem;
+    height: 2.8rem;
+    position: absolute;
+    right: 10px;
+    border-radius: 100vw;
+    border: 1px solid grey;
+    display: flex;
 }
