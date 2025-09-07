@@ -12,7 +12,7 @@ const targetUserId = params.get("userId")
 function createElement(elementName, className, target, content) {
     const element = document.createElement(elementName);
     element.className = className
-    if ((elementName === "h1" || "h2" || "h3" ||  "p") && content) element.textContent = content
+    if ((elementName === "h1" || "h2" || "h3" || "p") && content) element.textContent = content
     if (elementName === "img" && content) element.src = content
     target.appendChild(element)
     return element
@@ -45,12 +45,15 @@ messageButton.addEventListener("click", () => {
     if (messageValue) {
         createElement("div", "messageBox", chatSection, messageValue)
         socket.emit("message", messageValue, targetUserId)
+        chatSection.scrollTop = chatSection.scrollHeight
     }
     messageInput.value = ""
 })
 
 socket.on("feedback", (data) => {
     createElement("div", "senderMessage", chatSection, data)
+    chatSection.scrollTop = chatSection.scrollHeight
+
 })
 
 // get user details 
@@ -66,10 +69,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         }),
     })
     const toJson = await fetchData.json();
-    if (fetchData.status === 401) return console.loga(toJson.msg)
+    if (fetchData.status === 401) return console.log(toJson.msg)
     if (fetchData.status === 200) {
         console.log(toJson.msg)
-        createElement("img", "userProfile", profileNav, toJson.data.ProfileLink )
+        createElement("img", "userProfile", profileNav, toJson.data.ProfileLink)
         createElement("p", "userName", profileNav, `${toJson.data.name} ${toJson.data.lastName}`)
     }
 })
