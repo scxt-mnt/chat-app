@@ -17,10 +17,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 const server = http.createServer(app);
 const io = new Server(server, {
-        cors: {
+    cors: {
         origin: "http://127.0.0.1:5501",
         credentials: true
-    }}
+    }
+}
 );
 
 const db = mysql.createPool({
@@ -39,7 +40,7 @@ server.listen(PORT, "127.0.0.1", () => { console.log("listening to: " + PORT); }
 app.get('/login', (req, res) => {
     const cookie = req.cookies.token
 
-    if(!cookie) return console.log("no data")
+    if (!cookie) return console.log("no data")
     if (cookie) {
         const token = jwt.verify(cookie, SECRET);
         const query = "SELECT * FROM user WHERE id != ?"
@@ -103,7 +104,7 @@ app.get('/get-Details', (req, res) => {
                 return res.status(401).send({ msg: "no account fetched" })
             }
             if (user) {
-                res.status(200).send({ msg: "succesfully fetched data", data: {imgLink: user.ProfileLink, name: user.name, lastName: user.lastName, id: user.id}  })
+                res.status(200).send({ msg: "succesfully fetched data", data: { imgLink: user.ProfileLink, name: user.name, lastName: user.lastName, id: user.id } })
             }
         })
     }
@@ -116,8 +117,8 @@ app.post("/userInfo", (req, res) => {
     const query = "SELECT * FROM user WHERE id = ?"
     db.query(query, [id], (err, result) => {
         const user = result[0];
-        if(user.length === 0) return res.status(401).send({msg: "no user found", data: user})
-        res.status(200).send({msg: "user details collected", data: user})
+        if (user.length === 0) return res.status(401).send({ msg: "no user found", data: user })
+        res.status(200).send({ msg: "user details collected", data: user })
     })
 })
 
@@ -126,18 +127,27 @@ app.post("/userInfo", (req, res) => {
 // websocket
 
 const users = {}
+let myUserId;
 
 io.on("connection", (socket) => {
     console.log("user connected " + socket.id)
 
+    socket.on("disconnect", () => {
+        delete users[myUserId]
+        console.log("user disconnected " + socket.id)
+    })
+
     socket.on("userId", (userId) => {
         users[userId] = socket.id
-    }) 
+        myUserId = userId
+        console.log(users)
+    })
 
     socket.on("message", (data, targetUserId) => {
         console.log("message received " + data)
         io.to(users[targetUserId]).emit("feedback", data)
     })
+
 })
 
 
