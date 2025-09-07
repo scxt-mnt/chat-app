@@ -7,7 +7,7 @@ body {
     width: 100vw;
     height: 100vh;
     display: grid;
-    grid-template-rows: 65px 1fr 80px;
+    grid-template-rows: 65px 1fr 50px;
     overflow: hidden;
 }
 
@@ -15,6 +15,7 @@ body {
 .message-section {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
 }
 
@@ -26,7 +27,6 @@ body {
     border-radius: 100%;
     display: flex;
     justify-content: center;
-    margin-left: 1.5rem;
 }
 
 .messageInput {
@@ -65,12 +65,14 @@ body {
 
 .chatSection {
     display: flex;
-    justify-content: end;
-    align-items: end;
+    align-items: flex-end;
     flex-direction: column;
     margin-right: 10px;
     gap: 1rem;
     overflow-y: auto;
+    padding-bottom: 1rem;
+    border: 2px solid red;
+
 }
 
 .senderMessage {
@@ -133,4 +135,8 @@ body {
     margin-left: 10px;
     border-radius: 100vh;
     border: none;
+}
+
+.messageSpacer{
+    margin-bottom: auto;
 }
