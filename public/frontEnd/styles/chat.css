@@ -71,8 +71,6 @@ body {
     gap: 1rem;
     overflow-y: auto;
     padding-bottom: 1rem;
-    border: 2px solid red;
-
 }
 
 .senderMessage {
@@ -139,4 +137,17 @@ body {
 
 .messageSpacer{
     margin-bottom: auto;
+}
+.statusDot, .offStatus{
+    margin: 0;
+    position: absolute;
+    height: 0.7rem;
+    width: 0.7rem;
+    border-radius: 100vw;
+    background-color: green;
+    bottom: 5px;
+    left: 30px;
+}
+.offStatus{
+    background-color: gray;
 }

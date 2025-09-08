@@ -53,7 +53,6 @@ messageButton.addEventListener("click", () => {
 socket.on("feedback", (data) => {
     createElement("div", "senderMessage", chatSection, data)
     chatSection.scrollTop = chatSection.scrollHeight
-
 })
 
 // get user details 
@@ -74,6 +73,22 @@ document.addEventListener("DOMContentLoaded", async () => {
         console.log(toJson.msg)
         createElement("img", "userProfile", profileNav, toJson.data.ProfileLink)
         createElement("p", "userName", profileNav, `${toJson.data.name} ${toJson.data.lastName}`)
+    }
+})
+
+socket.on("activeUser", (data) => {
+    console.log(data.isActive);
+    if(data.isActive){
+        const dotElement = document.createElement("div");
+        dotElement.className = "statusDot"
+        profileNav.appendChild(dotElement);
+
+        if(!data.isActive){
+        createElement("div", "offStatus", profileNav, "");
+    }
+    }
+    if(!data.isActive){
+        createElement("div", "offStatus", profileNav, "");
     }
 })
 
