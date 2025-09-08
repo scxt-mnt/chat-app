@@ -76,20 +76,21 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 })
 
+createElement("div", "offStatus", profileNav, "");
+
 socket.on("activeUser", (data) => {
     console.log(data.isActive);
-    if(data.isActive){
+    if (data.isActive) {
         const dotElement = document.createElement("div");
         dotElement.className = "statusDot"
         profileNav.appendChild(dotElement);
 
-        if(!data.isActive){
+    }
+
+    if (!data.isActive) {
         createElement("div", "offStatus", profileNav, "");
     }
-    }
-    if(!data.isActive){
-        createElement("div", "offStatus", profileNav, "");
-    }
+
 })
 
 

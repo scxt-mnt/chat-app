@@ -2,6 +2,8 @@
 const parentCard = document.querySelector(".chats");
 const nav = document.querySelector(".nav");
 
+
+
 function createElement(elementName, className, target, content) {
     const element = document.createElement(elementName);
     element.className = className
