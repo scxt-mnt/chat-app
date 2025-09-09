@@ -9,11 +9,14 @@ const body = document.querySelector("body");
 const navLine2 = document.querySelector(".navLine2")
 let isClick = false;
 
+
+
+
 // side bar
 navButton.addEventListener("click", () => {
 
     isClick = !isClick
-    if (!isClick) {
+    if (isClick) {
         const sideBar = document.createElement("main");
         sideBar.className = "sideBar"
         body.prepend(sideBar)
@@ -22,6 +25,7 @@ navButton.addEventListener("click", () => {
         const sideBar = document.querySelector(".sideBar")
         body.removeChild(sideBar)
         navLine2.style.transform = 'rotate(90deg)'
+        navLine2.style.transition = "transform 0.5s"
     }
 
 })
