@@ -4,6 +4,15 @@ const messageButton = document.querySelector(".sendButton")
 const messageInput = document.querySelector(".messageInput");
 const chatSection = document.querySelector(".chatSection");
 const profileNav = document.querySelector(".profileNav")
+const navButton = document.querySelector(".navButton");
+const body = document.querySelector("body");
+
+navButton.addEventListener("click", () => {
+    const sideBar = document.createElement("main");
+    sideBar.className = "sideBar"
+    body.prepend(sideBar)
+})
+
 
 
 const socket = io("http://127.0.0.1:8080");
@@ -103,7 +112,6 @@ socket.on("feedback", (data) => {
     createElement("img", "senderImage", senderBubble, profileImage)
     chatSection.scrollTop = chatSection.scrollHeight
 })
-
 
 
 

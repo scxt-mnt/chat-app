@@ -11,7 +11,7 @@ body {
     overflow: hidden;
     background: #73728a;
     background: linear-gradient(90deg, rgba(115, 114, 138, 1) 0%, rgba(39, 39, 66, 1) 0%, rgba(57, 93, 102, 1) 100%);
-    color: white;
+    color: rgb(81, 186, 212);
     font-family: "Roboto", sans-serif;
     font-weight: 600;
 }
@@ -37,12 +37,13 @@ body {
 
 .messageInput {
     height: 2rem;
-    padding: 4px 3rem 1px 1.5rem;
+    padding: 5px 3rem 1px 1.5rem;
     border-radius: 20px;
     outline: none;
     border: none;
     background-color: rgb(255, 249, 249);
     border: 0.1px solid rgb(168, 168, 168);
+    overflow-wrap: break-word;
 }
 
 .sendButton {
@@ -102,7 +103,8 @@ body {
     justify-content: start;
     align-items: center;
     background: #73728a;
-    background: linear-gradient(90deg, rgba(115, 114, 138, 1) 0%, rgba(39, 39, 66, 1) 0%, rgba(57, 93, 102, 1) 100%);
+    background: linear-gradient(90deg, rgba(115, 114, 138, 1) 0%,
+            rgba(39, 39, 66, 1) 0%, rgba(57, 93, 102, 1) 100%);
 }
 
 
@@ -118,13 +120,14 @@ body {
     background-color: transparent;
     border: none;
     cursor: pointer;
+    z-index: 20;
 }
 
 .navLine2 {
     width: 20px;
     height: 2.5px;
     transform: rotate(90deg);
-    transition: 0.5s;
+    transition: 1s;
 }
 
 .navButton:focus .navLine2 {
@@ -181,4 +184,36 @@ body {
     width: 15px;
     position: relative;
     left: 5px;
+}
+
+.sideBar {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    z-index: 10;
+    background: #73728a;
+    background: linear-gradient(90deg, rgba(115, 114, 138, 1) 0%,
+            rgba(39, 39, 66, 1) 0%, rgba(57, 93, 102, 1) 100%);
+    animation: slide 1s ease-out;
+
+}
+
+@keyframes slide {
+    0% {
+        height: 0px;
+        width: 100vw;
+        border-radius: 0 0 100px 100px;
+    }
+
+    50% {
+        height: 50vh;
+        width: 100vw;
+        border-radius: 0 0 50px 50px;
+    }
+
+    100% {
+        height: 100vh;
+        width: 100vw;
+    }
+
 }
