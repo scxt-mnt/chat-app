@@ -137,8 +137,7 @@ io.on("connection", (socket) => {
     socket.on("disconnect", () => {
         delete users[myUserId]
         console.log("user disconnected " + socket.id)
-        socket.broadcast.emit("activeUser", { userId: myUserId, isActive: false })
-
+        socket.broadcast.emit("activeUser", {  isActive: false })
     })
 
     socket.on("userId", (userId) => {
