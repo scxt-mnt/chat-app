@@ -6,11 +6,24 @@ const chatSection = document.querySelector(".chatSection");
 const profileNav = document.querySelector(".profileNav")
 const navButton = document.querySelector(".navButton");
 const body = document.querySelector("body");
+const navLine2 = document.querySelector(".navLine2")
+let isClick = false;
 
+// side bar
 navButton.addEventListener("click", () => {
-    const sideBar = document.createElement("main");
-    sideBar.className = "sideBar"
-    body.prepend(sideBar)
+
+    isClick = !isClick
+    if (!isClick) {
+        const sideBar = document.createElement("main");
+        sideBar.className = "sideBar"
+        body.prepend(sideBar)
+        navLine2.style.transform = 'rotate(0deg)'
+    } else {
+        const sideBar = document.querySelector(".sideBar")
+        body.removeChild(sideBar)
+        navLine2.style.transform = 'rotate(90deg)'
+    }
+
 })
 
 
