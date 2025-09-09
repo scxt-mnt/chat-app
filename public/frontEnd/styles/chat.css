@@ -9,6 +9,11 @@ body {
     display: grid;
     grid-template-rows: 65px 1fr 70px;
     overflow: hidden;
+    background: #73728a;
+    background: linear-gradient(90deg, rgba(115, 114, 138, 1) 0%, rgba(39, 39, 66, 1) 0%, rgba(57, 93, 102, 1) 100%);
+    color: white;
+    font-family: "Roboto", sans-serif;
+    font-weight: 600;
 }
 
 
@@ -17,6 +22,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: 10px;
+    background-color: white;
 }
 
 .imageButton {
@@ -62,16 +68,19 @@ body {
     background-color: rgb(171, 190, 187);
     border-radius: 1rem;
     overflow-wrap: break-word;
+    color: black;
 }
 
 .chatSection {
     display: flex;
     align-items: flex-end;
     flex-direction: column;
-    margin-right: 10px;
+    padding: 10px;
     gap: 0.5rem;
     overflow-y: auto;
     padding-bottom: 1rem;
+    background-color: white;
+    border-radius: 1rem 1rem 0 0;
 }
 
 .senderMessage {
@@ -92,13 +101,16 @@ body {
     display: flex;
     justify-content: start;
     align-items: center;
+    background: #73728a;
+    background: linear-gradient(90deg, rgba(115, 114, 138, 1) 0%, rgba(39, 39, 66, 1) 0%, rgba(57, 93, 102, 1) 100%);
 }
+
 
 .navLine1,
 .navLine2 {
     width: 2.5px;
     height: 20px;
-    background-color: rgb(165, 157, 157);
+    background-color: rgb(255, 255, 255);
 }
 
 .navButton {
@@ -126,10 +138,10 @@ body {
     position: absolute;
     right: 10px;
     border-radius: 100vw;
-    border: 0.2px solid rgb(173, 164, 164);
+    border: 0.2px solid rgb(255, 255, 255);
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
 }
 
 .userProfile {
@@ -169,8 +181,4 @@ body {
     width: 15px;
     position: relative;
     left: 5px;
-}
-
-.messagesHeader {
-color: blueviolet;
 }
