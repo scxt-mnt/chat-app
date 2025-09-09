@@ -9,7 +9,7 @@ const profileNav = document.querySelector(".profileNav")
 const socket = io("http://127.0.0.1:8080");
 const params = new URLSearchParams(window.location.search)
 const targetUserId = params.get("userId")
-const profileImage = "";
+let profileImage = ""
 
 function createElement(elementName, className, target, content) {
     const element = document.createElement(elementName);
@@ -66,12 +66,13 @@ document.addEventListener("DOMContentLoaded", async () => {
         }),
     })
     const toJson = await fetchData.json();
+    profileImage = toJson.data.ProfileLink
+
     if (fetchData.status === 401) return console.log(toJson.msg)
     if (fetchData.status === 200) {
         console.log(toJson.msg)
         createElement("img", "userProfile", profileNav, toJson.data.ProfileLink)
         createElement("p", "userName", profileNav, `${toJson.data.name} ${toJson.data.lastName}`)
-        profileImage = toJson.data.ProfileLink
     }
 
 })
@@ -94,7 +95,7 @@ socket.on("activeUser", (data) => {
 })
 
 
-  socket.on("feedback", (data) => {
+socket.on("feedback", (data) => {
     const senderBubble = createElement("div", "senderBubble", chatSection, "");
     createElement("div", "senderMessage", senderBubble, data)
     createElement("img", "senderImage", senderBubble, profileImage)
