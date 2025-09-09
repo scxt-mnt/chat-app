@@ -61,6 +61,7 @@ body {
     padding: 5px 20px 5px 20px;
     background-color: rgb(171, 190, 187);
     border-radius: 1rem;
+    overflow-wrap: break-word;
 }
 
 .chatSection {
@@ -68,7 +69,7 @@ body {
     align-items: flex-end;
     flex-direction: column;
     margin-right: 10px;
-    gap: 1rem;
+    gap: 0.5rem;
     overflow-y: auto;
     padding-bottom: 1rem;
 }
@@ -77,6 +78,8 @@ body {
     align-self: start;
     margin-left: 1rem;
     background-color: rgb(128, 161, 156);
+    white-space: auto;
+    overflow-wrap: break-word;
 }
 
 
@@ -137,10 +140,12 @@ body {
     border: none;
 }
 
-.messageSpacer{
+.messageSpacer {
     margin-bottom: auto;
 }
-.statusDot, .offStatus{
+
+.statusDot,
+.offStatus {
     margin: 0;
     position: absolute;
     height: 0.7rem;
@@ -150,11 +155,12 @@ body {
     bottom: 5px;
     left: 30px;
 }
-.offStatus{
+
+.offStatus {
     background-color: gray;
 }
 
-.senderBubble{
+.senderBubble {
     align-self: start;
 }
 
@@ -163,4 +169,8 @@ body {
     width: 15px;
     position: relative;
     left: 5px;
+}
+
+.messagesHeader {
+color: blueviolet;
 }

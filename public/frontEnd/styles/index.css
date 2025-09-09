@@ -9,16 +9,20 @@ body {
     position: relative;
     display: flex;
     flex-direction: column;
+    background: #73728a;
+    background: linear-gradient(90deg, rgba(115, 114, 138, 1) 0%, rgba(39, 39, 66, 1) 0%, rgba(57, 93, 102, 1) 100%);
+
 }
 
 .nav {
     display: flex;
-    background-color: rgb(131, 124, 124);
     flex-grow: 1;
     align-items: center;
     height: 0;
-    padding-left: 1rem;    
+    padding-left: 1rem;
     gap: 5px;
+    background: #73728a;
+    background: linear-gradient(90deg, rgba(115, 114, 138, 1) 0%, rgba(39, 39, 66, 1) 0%, rgba(57, 93, 102, 1) 100%);
 }
 
 .userHead {
@@ -29,15 +33,16 @@ body {
 }
 
 .chats {
-    background: rgb(255, 255, 255);
+    background: rgb(255, 249, 249);
     flex-grow: 7;
     display: flex;
     flex-direction: column;
-    align-items: center ;
+    align-items: center;
+    border-radius: 2rem 2rem 0 0;
 }
 
-.accountCard{
-    width:18rem;
+.accountCard {
+    width: 18rem;
     height: 4rem;
     display: flex;
     align-items: center;
@@ -48,17 +53,24 @@ body {
     flex-direction: row;
     gap: 10px;
 }
-.profile{
+
+.profile {
     height: 2rem;
     border-radius: 100vw;
 }
 
-.profileImage{
+.profileImage {
     height: 2rem;
     border-radius: 100vh;
 }
 
-.profileName{
+.profileName {
     font-size: 1.2rem;
     width: auto;
+}
+
+.messagesHeader {
+    color: rgb(81, 186, 212);
+    font-family: "Roboto", sans-serif;
+
 }

@@ -42,8 +42,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         console.log(data.msg);
 
 
-        createElement("img", "profileImage", nav, data.data.imgLink)
-        createElement("h1", "profileName", nav, `${data.data.name} ${data.data.lastName} `)
+
     }
 
     if (url.status === 200) {
