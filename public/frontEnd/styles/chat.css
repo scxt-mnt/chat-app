@@ -7,7 +7,7 @@ body {
     width: 100vw;
     height: 100vh;
     display: grid;
-    grid-template-rows: 65px 1fr 50px;
+    grid-template-rows: 65px 1fr 70px;
     overflow: hidden;
 }
 
@@ -78,6 +78,8 @@ body {
     margin-left: 1rem;
     background-color: rgb(128, 161, 156);
 }
+
+
 
 .sendButton:active {
     background-color: rgb(175, 171, 171);
@@ -150,4 +152,15 @@ body {
 }
 .offStatus{
     background-color: gray;
+}
+
+.senderBubble{
+    align-self: start;
+}
+
+.senderImage {
+    height: 15px;
+    width: 15px;
+    position: relative;
+    left: 5px;
 }

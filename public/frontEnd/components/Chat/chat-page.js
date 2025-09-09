@@ -5,9 +5,11 @@ const messageInput = document.querySelector(".messageInput");
 const chatSection = document.querySelector(".chatSection");
 const profileNav = document.querySelector(".profileNav")
 
+
 const socket = io("http://127.0.0.1:8080");
 const params = new URLSearchParams(window.location.search)
 const targetUserId = params.get("userId")
+const profileImage = "";
 
 function createElement(elementName, className, target, content) {
     const element = document.createElement(elementName);
@@ -50,10 +52,6 @@ messageButton.addEventListener("click", () => {
     messageInput.value = ""
 })
 
-socket.on("feedback", (data) => {
-    createElement("div", "senderMessage", chatSection, data)
-    chatSection.scrollTop = chatSection.scrollHeight
-})
 
 // get user details 
 
@@ -73,7 +71,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         console.log(toJson.msg)
         createElement("img", "userProfile", profileNav, toJson.data.ProfileLink)
         createElement("p", "userName", profileNav, `${toJson.data.name} ${toJson.data.lastName}`)
+        profileImage = toJson.data.ProfileLink
     }
+
 })
 
 createElement("div", "offStatus", profileNav, "");
@@ -93,6 +93,13 @@ socket.on("activeUser", (data) => {
 
 })
 
+
+  socket.on("feedback", (data) => {
+    const senderBubble = createElement("div", "senderBubble", chatSection, "");
+    createElement("div", "senderMessage", senderBubble, data)
+    createElement("img", "senderImage", senderBubble, profileImage)
+    chatSection.scrollTop = chatSection.scrollHeight
+})
 
 
 
