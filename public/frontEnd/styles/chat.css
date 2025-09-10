@@ -251,11 +251,11 @@ body {
     align-items: center;
     gap: 10px;
     margin: 2rem;
-    position: relative;
-    bottom: 15rem;
     color:  rgb(81, 186, 212);
     font-family: "Roboto", sans-serif;
     border-bottom: solid rgb(81, 186, 212);
+    position: relative;
+    bottom: 5rem;
 }
 
 .sideBarImage {

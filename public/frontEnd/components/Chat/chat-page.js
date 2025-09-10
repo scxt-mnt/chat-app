@@ -13,6 +13,14 @@ let myProfilePicture = "";
 let myName = "";
 let myLastName = "";
 
+function createElement(elementName, className, target, content) {
+    const element = document.createElement(elementName);
+    element.className = className
+    if ((elementName === "h1" || "h2" || "h3" || "p" || "button") && content) element.textContent = content
+    if (elementName === "img" && content) element.src = content
+    target.appendChild(element)
+    return element
+}
 
 
 
@@ -35,12 +43,13 @@ navButton.addEventListener("click", async () => {
 
         createElement("div", "sideBarProfile", sideBar, "")
         const sideBarProfile = document.querySelector(".sideBarProfile")
+        createElement("button", "sideBarReport", sideBar, "Report")
+
 
         // sidebar contents
 
         if (myProfilePicture) {
-            const sideBarImage = createElement("img", "sideBarImage", sideBarProfile, "");
-            sideBarImage.src = myProfilePicture;
+            createElement("img", "sideBarImage", sideBarProfile, myProfilePicture);
         }
         if (myName && myLastName) {
             createElement("p", "sideBarName", sideBarProfile, `${myName} ${myLastName}`)
@@ -70,14 +79,7 @@ const params = new URLSearchParams(window.location.search)
 const targetUserId = params.get("userId")
 let profileImage = ""
 
-function createElement(elementName, className, target, content) {
-    const element = document.createElement(elementName);
-    element.className = className
-    if ((elementName === "h1" || "h2" || "h3" || "p") && content) element.textContent = content
-    if (elementName === "img" && content) element.src = content
-    target.appendChild(element)
-    return element
-}
+
 
 
 document.addEventListener("DOMContentLoaded", async () => {
