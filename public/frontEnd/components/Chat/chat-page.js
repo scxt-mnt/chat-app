@@ -22,19 +22,20 @@ navButton.addEventListener("click", () => {
         sideBar.className = "sideBar"
         body.prepend(sideBar)
         navLine2.style.transform = 'rotate(0deg)'
+        navLine2.style.backgroundColor = "red"
         sideBar.style.animation = "slide 1s ease-out"
     } else {
         const sideBar = document.querySelector(".sideBar")
         navLine2.style.transform = 'rotate(90deg)'
         navLine2.style.transition = "transform 0.5s"
+        navLine2.style.backgroundColor = "white"
         sideBar.style.animation = "fade-out 1s ease-out"
 
         sideBar.addEventListener("animationend", (e) => {
-            if(e.animationName === "fade-out"){
-            body.removeChild(sideBar)}
-        },{once: true})
-        
-
+            if (e.animationName === "fade-out") {
+                body.removeChild(sideBar)
+            }
+        }, { once: true })
     }
 })
 
@@ -76,6 +77,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 })
 
+//send messages
+
 messageButton.addEventListener("click", () => {
     const messageValue = messageInput.value
     if (messageValue) {
@@ -113,6 +116,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 createElement("div", "offStatus", profileNav, "");
 
+// checks active user
+
 socket.on("activeUser", (data) => {
     console.log(data.isActive);
     if (data.isActive) {
@@ -129,7 +134,7 @@ socket.on("activeUser", (data) => {
 })
 
 
-
+// message feedback
 
 socket.on("feedback", (data) => {
     const senderBubble = createElement("div", "senderBubble", chatSection, "");
