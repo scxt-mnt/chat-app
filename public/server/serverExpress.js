@@ -45,7 +45,7 @@ app.get('/login', (req, res) => {
         const token = jwt.verify(cookie, SECRET);
         const query = "SELECT * FROM user WHERE id != ?"
         db.query(query, [token.id], (err, result) => {
-            if (!result) {
+            if (!result || err) {
                 return res.status(401).send({ msg: "failed to fetch", isLog: false })
             }
 

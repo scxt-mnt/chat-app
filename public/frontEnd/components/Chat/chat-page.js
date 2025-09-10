@@ -9,12 +9,16 @@ const body = document.querySelector("body");
 const navLine2 = document.querySelector(".navLine2")
 
 let isClick = false;
+let myProfilePicture = "";
+let myName = "";
+let myLastName = "";
 
 
 
 
 // side bar
-navButton.addEventListener("click", () => {
+navButton.addEventListener("click", async () => {
+
 
     isClick = !isClick
     if (isClick) {
@@ -33,8 +37,15 @@ navButton.addEventListener("click", () => {
         const sideBarProfile = document.querySelector(".sideBarProfile")
 
         // sidebar contents
-        createElement("img", "sideBarImage", sideBarProfile, "");
-        createElement("p", "sideBarName", sideBarProfile, "Scott Boragay")
+
+        if (myProfilePicture) {
+            const sideBarImage = createElement("img", "sideBarImage", sideBarProfile, "");
+            sideBarImage.src = myProfilePicture;
+        }
+        if (myName && myLastName) {
+            createElement("p", "sideBarName", sideBarProfile, `${myName} ${myLastName}`)
+        }
+
 
 
     } else {
@@ -71,6 +82,8 @@ function createElement(elementName, className, target, content) {
 
 document.addEventListener("DOMContentLoaded", async () => {
 
+    //get own details
+
     const getDetails = await fetch("http://127.0.0.1:8080/get-Details", {
         method: "GET",
         headers: { Accept: "application/json" },
@@ -87,7 +100,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         socket.emit("userId", data.data.id)
     }
 
-    //send messages
+    myProfilePicture = data.data.imgLink
+    myName = data.data.name
+    myLastName = data.data.lastName
+
+
+    // get user details 
 
 
     const fetchData = await fetch("http://127.0.0.1:8080/userInfo", {
@@ -109,7 +127,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         createElement("p", "userName", profileNav, `${toJson.data.name} ${toJson.data.lastName}`)
     }
 
-
 })
 
 
@@ -124,12 +141,7 @@ messageButton.addEventListener("click", () => {
 })
 
 
-// get user details 
 
-document.addEventListener("DOMContentLoaded", async () => {
-
-
-})
 
 createElement("div", "offStatus", profileNav, "");
 
