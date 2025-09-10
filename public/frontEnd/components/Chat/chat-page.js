@@ -19,17 +19,30 @@ navButton.addEventListener("click", () => {
     isClick = !isClick
     if (isClick) {
         const sideBar = document.createElement("main");
+
+
+
         sideBar.className = "sideBar"
         body.prepend(sideBar)
         navLine2.style.transform = 'rotate(0deg)'
         navLine2.style.backgroundColor = "red"
-        sideBar.style.animation = "slide 1s ease-out"
+        sideBar.style.animation = "slide 0.7s ease-out"
+
+
+        createElement("div", "sideBarProfile", sideBar, "")
+        const sideBarProfile = document.querySelector(".sideBarProfile")
+
+        // sidebar contents
+        createElement("img", "sideBarImage", sideBarProfile, "");
+        createElement("p", "sideBarName", sideBarProfile, "Scott Boragay")
+
+
     } else {
         const sideBar = document.querySelector(".sideBar")
         navLine2.style.transform = 'rotate(90deg)'
         navLine2.style.transition = "transform 0.5s"
         navLine2.style.backgroundColor = "white"
-        sideBar.style.animation = "fade-out 1s ease-out"
+        sideBar.style.animation = "fade-out 0.7s ease-out"
 
         sideBar.addEventListener("animationend", (e) => {
             if (e.animationName === "fade-out") {
@@ -74,25 +87,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         socket.emit("userId", data.data.id)
     }
 
-
-})
-
-//send messages
-
-messageButton.addEventListener("click", () => {
-    const messageValue = messageInput.value
-    if (messageValue) {
-        createElement("div", "messageBox", chatSection, messageValue)
-        socket.emit("message", messageValue, targetUserId)
-        chatSection.scrollTop = chatSection.scrollHeight
-    }
-    messageInput.value = ""
-})
+    //send messages
 
 
-// get user details 
-
-document.addEventListener("DOMContentLoaded", async () => {
     const fetchData = await fetch("http://127.0.0.1:8080/userInfo", {
         method: "POST",
         headers: {
@@ -111,6 +108,26 @@ document.addEventListener("DOMContentLoaded", async () => {
         createElement("img", "userProfile", profileNav, toJson.data.ProfileLink)
         createElement("p", "userName", profileNav, `${toJson.data.name} ${toJson.data.lastName}`)
     }
+
+
+})
+
+
+messageButton.addEventListener("click", () => {
+    const messageValue = messageInput.value
+    if (messageValue) {
+        createElement("div", "messageBox", chatSection, messageValue)
+        socket.emit("message", messageValue, targetUserId)
+        chatSection.scrollTop = chatSection.scrollHeight
+    }
+    messageInput.value = ""
+})
+
+
+// get user details 
+
+document.addEventListener("DOMContentLoaded", async () => {
+
 
 })
 
