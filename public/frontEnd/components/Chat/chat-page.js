@@ -7,6 +7,7 @@ const profileNav = document.querySelector(".profileNav")
 const navButton = document.querySelector(".navButton");
 const body = document.querySelector("body");
 const navLine2 = document.querySelector(".navLine2")
+
 let isClick = false;
 
 
@@ -21,13 +22,20 @@ navButton.addEventListener("click", () => {
         sideBar.className = "sideBar"
         body.prepend(sideBar)
         navLine2.style.transform = 'rotate(0deg)'
+        sideBar.style.animation = "slide 1s ease-out"
     } else {
         const sideBar = document.querySelector(".sideBar")
-        body.removeChild(sideBar)
         navLine2.style.transform = 'rotate(90deg)'
         navLine2.style.transition = "transform 0.5s"
-    }
+        sideBar.style.animation = "fade-out 1s ease-out"
 
+        sideBar.addEventListener("animationend", (e) => {
+            if(e.animationName === "fade-out"){
+            body.removeChild(sideBar)}
+        },{once: true})
+        
+
+    }
 })
 
 

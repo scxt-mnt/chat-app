@@ -13,7 +13,7 @@
 </head>
 
 <body>
-
+    
     <main class="main">
         <nav class="navigationBar">
             <button class="navButton">
@@ -36,25 +36,7 @@
                 <img src="https://img.icons8.com/?size=20&id=93330&format=png&color=000000" alt="image"></button>
         </section>
     </main>
-    <script type="module" src="./chat-page.js">
-        // side bar
-        navButton.addEventListener("click", () => {
-
-            isClick = !isClick
-            if (!isClick) {
-                const sideBar = document.createElement("main");
-                sideBar.className = "sideBar"
-                body.prepend(sideBar)
-                navLine2.style.transform = 'rotate(0deg)'
-            } else {
-                const sideBar = document.querySelector(".sideBar")
-                body.removeChild(sideBar)
-                navLine2.style.transform = 'rotate(90deg)'
-                navLine2.style.duration = "0.5s"
-            }
-
-        })
-    </script>
+    <script type="module" src="./chat-page.js"></script>
 </body>
 
 
