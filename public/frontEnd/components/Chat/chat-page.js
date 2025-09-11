@@ -40,20 +40,49 @@ navButton.addEventListener("click", async () => {
         navLine2.style.backgroundColor = "red"
         sideBar.style.animation = "slide 0.7s ease-out"
 
+        const sideBarContainer1 = createElement("div", "sideBarContainer1", sideBar, "")
+        const sideBarContainer2 = createElement("div", "sideBarContainer2", sideBar, "")
+        const sideBarContainer3 = createElement("div", "sideBarContainer3", sideBar, "")
+        const sideBarContainer4 = createElement("div", "sideBarContainer4", sideBar, "")
+        const sideBarContainer5 = createElement("div", "sideBarContainer5", sideBar, "")
 
-        createElement("div", "sideBarProfile", sideBar, "")
-        const sideBarProfile = document.querySelector(".sideBarProfile")
-        createElement("button", "sideBarReport", sideBar, "Report")
+
+        // sideBar1 elements
+        createElement("img", "sideBarLogo", sideBarContainer1, "https://res.cloudinary.com/doan4g4r9/image/upload/v1757576831/white_on_trans_xxuhpm.png");
+        // sideBar2 elements
+        const sideBarSearch = createElement("input", "sideBarSearch", sideBarContainer2, "");
+        sideBarSearch.placeholder = "Search Messages"
+        //sideBar3 elements
+        const sideBarReport = createElement("div", "sideBarReport", sideBarContainer3, "")
+        createElement("img", "reportLogo", sideBarReport, "https://res.cloudinary.com/doan4g4r9/image/upload/v1757576857/icons8-warning-shield-50_sr2ang.png")
+        createElement("h3", "reportHeader", sideBarReport, "Report")
 
 
-        // sidebar contents
+        const sideBarNotifications = createElement("div", "sideBarNotifications", sideBarContainer3, "")
+        createElement("img", "reportLogo", sideBarNotifications, "https://res.cloudinary.com/doan4g4r9/image/upload/v1757576857/icons8-notifications-78_nkidsw.png")
+        createElement("h3", "reportHeader", sideBarNotifications, "Notifications")
 
-        if (myProfilePicture) {
-            createElement("img", "sideBarImage", sideBarProfile, myProfilePicture);
-        }
-        if (myName && myLastName) {
-            createElement("p", "sideBarName", sideBarProfile, `${myName} ${myLastName}`)
-        }
+        const sideBarContacts = createElement("div", "sideBarContacts", sideBarContainer3, "");
+        createElement("img", "contactsLogo", sideBarContacts, "https://res.cloudinary.com/doan4g4r9/image/upload/v1757576857/icons8-contacts-50_ciwjdx.png")
+        createElement("h3", "contactsHeader", sideBarContacts, "Contacts")
+
+        const sideBarFAQ = createElement("div", "sideBarFAQ", sideBarContainer3, "");
+        createElement("img", "faqLogo", sideBarFAQ, "https://res.cloudinary.com/doan4g4r9/image/upload/v1757579900/icons8-faq-24_gzwat1.png")
+        createElement("h3", "faqHeader", sideBarFAQ, "FAQ   ")
+
+        const sideBarConvoy = createElement("div", "sideBarConvoy", sideBarContainer4, "");
+
+
+        const sideBarSettings = createElement("div", "sideBarSettings", sideBarContainer4, "");
+        createElement("img", "settingsLogo", sideBarSettings, "https://res.cloudinary.com/doan4g4r9/image/upload/v1757576856/icons8-settings-50_wdegm5.png")
+        createElement("h3", "settingsHeader", sideBarSettings, "Settings")
+
+        const sideBarLogout = createElement("div", "sideBarFAQ", sideBarContainer4, "");
+        createElement("img", "logoutLogo", sideBarLogout, "https://res.cloudinary.com/doan4g4r9/image/upload/v1757576856/icons8-log-out-50_a5iqdn.png")
+        createElement("h3", "logoutHeader", sideBarLogout, "Log out")
+
+
+
 
 
 
