@@ -226,7 +226,7 @@ body {
 
     100% {
         height: 0px;
-        width: 0vw;
+        width: 100vw;
         border-radius: 0 0 100px 100px;
     }
 
@@ -241,30 +241,71 @@ body {
     background: linear-gradient(90deg, rgba(115, 114, 138, 1) 0%,
             rgba(39, 39, 66, 1) 0%, rgba(57, 93, 102, 1) 100%);
     display: grid;
-    justify-content: end;
-    align-items: center;
+    grid-template-rows: 5.5rem 5rem 15rem;
+    font-family: "Roboto", sans-serif;
+
 }
 
-.sideBarProfile {
+.sideBarContainer1,
+.sideBarContainer2 {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+
+.sideBarContainer2 {
+    justify-content: center;
+}
+
+.sideBarContainer3, .sideBarContainer4{
+    border-bottom: 1px solid white;
+    display: flex;
+    flex-direction: column;
+}
+
+.sideBarContainer4{
+    border: none; 
+}
+
+
+.sideBarLogo {
+    height: 8rem;
+}
+
+.sideBarSearch {
+    height: 2.5rem;
+    width: 20rem;
+    border-radius: 100vw;
+    outline: none;
+    border: none;
+    padding-left: 2rem;
+}
+
+.sideBarReport,
+.sideBarNotifications,
+.sideBarContacts,
+.sideBarFAQ,
+.sideBarSettings,
+.sideBarLogout {
     display: flex;
     flex-direction: row;
     align-items: center;
+    padding-left: 2rem;
     gap: 10px;
-    margin: 2rem;
-    color:  rgb(81, 186, 212);
-    font-family: "Roboto", sans-serif;
-    border-bottom: solid rgb(81, 186, 212);
-    position: relative;
-    bottom: 5rem;
+    color: white;
 }
 
-.sideBarImage {
-    border-radius: 100vw;
-    height: 2rem;
-    width: 2rem;
+.reportLogo,
+.notificationsLogo,
+.contactsLogo,
+.faqLogo,
+.settingsLogo,
+.logoutLogo {
+    height: 1.5rem;
 }
 
-.sideBarName {
-    font-weight: 1000;
-    font-size: 1.2em;
+.logoutHeader{
+    color:rgb(207, 97, 97);
 }
+
