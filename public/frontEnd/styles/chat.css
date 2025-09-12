@@ -259,8 +259,7 @@ body {
 }
 
 .sideBarContainer3,
-.sideBarContainer4,
-.sideBarContainer5 {
+.sideBarContainer4 {
     border-bottom: 1px solid white;
     display: flex;
     flex-direction: column;
@@ -270,9 +269,13 @@ body {
 
 
 
-.sideBarContainer4,
-.sideBarContainer5 {
+.sideBarContainer4 {
     border: none;
+}
+
+.sideBarContainer4 {
+    justify-content: start;
+    padding-top: 2rem;
 }
 
 
@@ -316,9 +319,31 @@ body {
     color: rgb(207, 97, 97);
 }
 
-.logoutLogo{
+.logoutLogo {
     height: 1.3rem;
 }
-.sideBarLogout{
-    padding-left: 20px;
+
+.sideBarProfileImg {
+    height: 2rem;
+    border-radius: 100vw;
+}
+
+.sideBarContainer5 {
+    display: flex;
+    align-items: center;
+    color: white;
+    font-weight: 400;
+}
+
+.sideBarProfiileDiv {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    height: auto;
+    margin-left: 2rem;
+    border: 1px solid white;
+    padding: 10px 25px;
+    border-radius: 100vw;
+
 }

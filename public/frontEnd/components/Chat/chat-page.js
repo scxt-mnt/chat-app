@@ -81,6 +81,14 @@ navButton.addEventListener("click", async () => {
         createElement("h3", "logoutHeader", sideBarLogout, "Log out")
 
 
+        const sideBarProfile = createElement("div", "sideBarProfile", sideBarContainer5, "");
+        const sideBarProfileDiv = createElement("div", "sideBarProfiileDiv", sideBarProfile, "");
+        createElement("img", "sideBarProfileImg", sideBarProfileDiv, myProfilePicture);
+        createElement("div", "sideBarProfileHeaders", sideBarProfileDiv, `${myName} ${myLastName}`);
+
+
+
+
 
 
 
