@@ -241,7 +241,7 @@ body {
     background: linear-gradient(90deg, rgba(115, 114, 138, 1) 0%,
             rgba(39, 39, 66, 1) 0%, rgba(57, 93, 102, 1) 100%);
     display: grid;
-    grid-template-rows: 5.5rem 5rem 15rem;
+    grid-template-rows: 5.5rem 5rem 13rem 10rem;
     font-family: "Roboto", sans-serif;
 
 }
@@ -258,14 +258,21 @@ body {
     justify-content: center;
 }
 
-.sideBarContainer3, .sideBarContainer4{
+.sideBarContainer3,
+.sideBarContainer4,
+.sideBarContainer5 {
     border-bottom: 1px solid white;
     display: flex;
     flex-direction: column;
+    gap: 20px;
+    justify-content: center;
 }
 
-.sideBarContainer4{
-    border: none; 
+
+
+.sideBarContainer4,
+.sideBarContainer5 {
+    border: none;
 }
 
 
@@ -294,18 +301,24 @@ body {
     padding-left: 2rem;
     gap: 10px;
     color: white;
+    height: 1rem;
 }
 
 .reportLogo,
 .notificationsLogo,
 .contactsLogo,
 .faqLogo,
-.settingsLogo,
-.logoutLogo {
+.settingsLogo {
     height: 1.5rem;
 }
 
-.logoutHeader{
-    color:rgb(207, 97, 97);
+.logoutHeader {
+    color: rgb(207, 97, 97);
 }
 
+.logoutLogo{
+    height: 1.3rem;
+}
+.sideBarLogout{
+    padding-left: 20px;
+}

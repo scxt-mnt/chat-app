@@ -70,7 +70,6 @@ navButton.addEventListener("click", async () => {
         createElement("img", "faqLogo", sideBarFAQ, "https://res.cloudinary.com/doan4g4r9/image/upload/v1757579900/icons8-faq-24_gzwat1.png")
         createElement("h3", "faqHeader", sideBarFAQ, "FAQ   ")
 
-        const sideBarConvoy = createElement("div", "sideBarConvoy", sideBarContainer4, "");
 
 
         const sideBarSettings = createElement("div", "sideBarSettings", sideBarContainer4, "");
