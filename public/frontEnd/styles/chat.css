@@ -315,13 +315,14 @@ body {
     height: 1.5rem;
 }
 
-.logoutHeader {
+.logoutHeader, .sideBarProfiileDiv {
     color: rgb(207, 97, 97);
+    position:  absolute;
+    right: 1rem;
+    bottom: 2.3rem;
 }
 
-.logoutLogo {
-    height: 1.3rem;
-}
+
 
 .sideBarProfileImg {
     height: 2rem;
@@ -333,17 +334,27 @@ body {
     align-items: center;
     color: white;
     font-weight: 400;
+    flex-direction: row;
+    position: relative;
 }
 
 .sideBarProfiileDiv {
+    color: white;
     display: flex;
-    flex-direction: row;
     align-items: center;
     gap: 10px;
     height: auto;
+    width: 10rem;
     margin-left: 2rem;
     border: 1px solid white;
     padding: 10px 25px;
     border-radius: 100vw;
+    left: 0;
+}
 
+.myStatus{
+    height: 5px;
+    width: 5px;
+    border-radius: 100vw;
+    background-color: green;
 }
