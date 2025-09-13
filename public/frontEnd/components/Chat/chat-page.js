@@ -133,12 +133,6 @@ socket.on("feedback", (data) => {
 
 
 
-
-
-
-
-
-
 // side bar
 navButton.addEventListener("click", async () => {
 
@@ -202,7 +196,27 @@ navButton.addEventListener("click", async () => {
         if (isActive) {
             createElement("div", "myStatus", sideBarProfileDiv, "");
         }
-        createElement("h3", "logoutHeader", sideBarProfile, "Log out")
+        createElement("button", "logoutHeader", sideBarProfile, "Log out")
+
+        const logoutHeader = document.querySelector(".logoutHeader");
+
+
+        logoutHeader.addEventListener("click", async () => {
+
+            const setLogout = await fetch('http://127.0.0.1:8080/logout', {
+                headers: {
+                    Accept: "application/json"
+                },
+                credentials: 'include'
+            })
+
+            const data = await setLogout.json();
+
+            if (setLogout.status === 200) {
+                console.log(data.msg)
+            }
+        })
+
 
 
     } else {

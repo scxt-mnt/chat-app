@@ -156,3 +156,9 @@ io.on("connection", (socket) => {
 
 })
 
+app.get('/logout',(req, res) => {
+    res.clearCookie("token");
+
+    res.status(200).send({msg: "successfuly log out"});
+})
+
