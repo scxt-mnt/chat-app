@@ -1,14 +1,13 @@
-
+import { addChatPage } from "./Chat/chat-page.js";
 const parentCard = document.querySelector(".chats");
-const nav = document.querySelector(".nav");
 
 
 
 function createElement(elementName, className, target, content) {
     const element = document.createElement(elementName);
     element.className = className
-    if((elementName === "h1" || "h2" || "h3") && content) element.textContent = content
-    if(elementName === "img" && content) element.src = content
+    if ((elementName === "h1" || "h2" || "h3") && content) element.textContent = content
+    if (elementName === "img" && content) element.src = content
     target.appendChild(element)
     return element
 }
@@ -48,19 +47,20 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (url.status === 200) {
         toJson.data.map((field) => {
 
-            
+
             const nameElement = document.createElement("h3");
-        
-            const containerCard = document.createElement("div")
+
+            const containerCard = document.createElement("div");
 
             containerCard.addEventListener("click", () => {
-                 window.location.href = `./Chat/chat-page.html?userId=${field.id}`                
+                window.history.pushState({}, "", `./Chat/chat-page.html?userId=${field.id}`);
+                addChatPage();
             })
 
 
-            createElement("img", "profile", containerCard, (field.ProfileLink ? field.ProfileLink :  "no content"))
+            createElement("img", "profile", containerCard, (field.ProfileLink ? field.ProfileLink : "no content"))
             containerCard.setAttribute("user-id", field.id)
-            
+
 
             containerCard.className = "accountCard";
 

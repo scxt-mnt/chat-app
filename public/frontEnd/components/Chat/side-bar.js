@@ -2,8 +2,6 @@ import { createElement } from "./chat-page.js";
 import { isActive } from "./chat-page.js";
 import { socket } from "./chat-page.js";
 
-
-
 let isClick = false;
 
 

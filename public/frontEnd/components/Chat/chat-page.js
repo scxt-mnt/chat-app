@@ -1,12 +1,7 @@
 import { io } from "https://cdn.socket.io/4.7.2/socket.io.esm.min.js";
-
-const messageButton = document.querySelector(".sendButton")
-const messageInput = document.querySelector(".messageInput");
-const chatSection = document.querySelector(".chatSection");
-const profileNav = document.querySelector(".profileNav")
+const main = document.querySelector(".main")
 
 
-export let isActive;
 
 export function createElement(elementName, className, target, content) {
     const element = document.createElement(elementName);
@@ -18,92 +13,132 @@ export function createElement(elementName, className, target, content) {
 }
 
 
-
-export const socket = io("http://127.0.0.1:8080");
-const params = new URLSearchParams(window.location.search)
-const targetUserId = params.get("userId")
-let profileImage = ""
+export let isActive;
+export let socket;
 
 
+export const addChatPage = function () {
+    const navigationBar = createElement("nav", "navigationBar", main, "");
+    const navButton = createElement("button", "navButton", navigationBar, "");
+    createElement("div", "navLine1", navButton, "");
+    createElement("div", "navLine2", navButton, "" );
+
+    createElement("section", "profileNav", navigationBar, "");
+
+    const chatSections = createElement("section", "chatSection", main, "");
+    createElement("div", "messageSpacer", chatSections, "");
+    
+    const messageSection = createElement("section", "message-section", main, "")
+    const imageButton = createElement("button", "imageButton", messageSection, "");
+    createElement("img", "sendImageLogo",imageButton, "https://img.icons8.com/?size=30&id=AUpdlW8CE4IS&format=png&color=000000" );
+
+    const messageInputs = createElement("input", "messageInput", imageButton, "");
+    messageInputs.placeholder = "message.."
+    messageInputs.type = "text"
+
+    const sendButtons = createElement("button", "sendButton", messageSection, "");
+    createElement("img", "", sendButtons, "https://img.icons8.com/?size=20&id=93330&format=png&color=000000");
 
 
-document.addEventListener("DOMContentLoaded", async () => {
+
+    const messageInput = document.querySelector(".messageInput");
+    const chatSection = document.querySelector(".chatSection");
+    const profileNav = document.querySelector(".profileNav");
 
 
 
 
-    // get user details 
 
 
-    const fetchData = await fetch("http://127.0.0.1:8080/userInfo", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            userId: targetUserId
-        }),
+
+
+    const sockets = io("http://127.0.0.1:8080");
+    const params = new URLSearchParams(window.location.search)
+    const targetUserId = params.get("userId")
+    let profileImage = ""
+
+    socket = sockets
+
+
+
+    document.addEventListener("DOMContentLoaded", async () => {
+
+
+
+
+        // get user details 
+
+
+        const fetchData = await fetch("http://127.0.0.1:8080/userInfo", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                userId: targetUserId
+            }),
+        })
+        const toJson = await fetchData.json();
+        profileImage = toJson.data.ProfileLink
+
+        if (fetchData.status === 401) return console.log(toJson.msg)
+        if (fetchData.status === 200) {
+            console.log(toJson.msg)
+            createElement("img", "userProfile", profileNav, toJson.data.ProfileLink)
+            createElement("p", "userName", profileNav, `${toJson.data.name} ${toJson.data.lastName}`)
+        }
+
     })
-    const toJson = await fetchData.json();
-    profileImage = toJson.data.ProfileLink
 
-    if (fetchData.status === 401) return console.log(toJson.msg)
-    if (fetchData.status === 200) {
-        console.log(toJson.msg)
-        createElement("img", "userProfile", profileNav, toJson.data.ProfileLink)
-        createElement("p", "userName", profileNav, `${toJson.data.name} ${toJson.data.lastName}`)
-    }
-
-})
+    const messageButton = document.querySelector(".sendButton")
 
 
-messageButton.addEventListener("click", () => {
-    const messageValue = messageInput.value
-    if (messageValue) {
-        createElement("div", "messageBox", chatSection, messageValue)
-        socket.emit("message", messageValue, targetUserId)
+    messageButton.addEventListener("click", () => {
+        const messageValue = messageInput.value
+        if (messageValue) {
+            createElement("div", "messageBox", chatSection, messageValue)
+            socket.emit("message", messageValue, targetUserId)
+            chatSection.scrollTop = chatSection.scrollHeight
+        }
+        messageInput.value = ""
+    })
+
+
+
+
+    createElement("div", "offStatus", profileNav, "");
+
+    // checks active user
+
+
+    socket.on("ownActiveUser", (data) => {
+        isActive = data.isActive
+    })
+
+
+    socket.on("activeUser", (data) => {
+
+        if (data.isActive) {
+            const dotElement = document.createElement("div");
+            dotElement.className = "statusDot"
+            profileNav.appendChild(dotElement);
+        }
+
+        if (!data.isActive) {
+            createElement("div", "offStatus", profileNav, "");
+        }
+
+    })
+
+
+    // message feedback
+
+    socket.on("feedback", (data) => {
+        const senderBubble = createElement("div", "senderBubble", chatSection, "");
+        createElement("div", "senderMessage", senderBubble, data)
+        createElement("img", "senderImage", senderBubble, profileImage)
         chatSection.scrollTop = chatSection.scrollHeight
-    }
-    messageInput.value = ""
-})
+    })
 
 
-
-
-createElement("div", "offStatus", profileNav, "");
-
-// checks active user
-
-
-socket.on("ownActiveUser", (data) => {
-    isActive = data.isActive
-})
-
-
-socket.on("activeUser", (data) => {
-
-    if (data.isActive) {
-        const dotElement = document.createElement("div");
-        dotElement.className = "statusDot"
-        profileNav.appendChild(dotElement);
-    }
-
-    if (!data.isActive) {
-        createElement("div", "offStatus", profileNav, "");
-    }
-
-})
-
-
-// message feedback
-
-socket.on("feedback", (data) => {
-    const senderBubble = createElement("div", "senderBubble", chatSection, "");
-    createElement("div", "senderMessage", senderBubble, data)
-    createElement("img", "senderImage", senderBubble, profileImage)
-    chatSection.scrollTop = chatSection.scrollHeight
-})
-
-
-
-
+}
