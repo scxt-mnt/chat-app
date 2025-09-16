@@ -113,6 +113,9 @@ navButton.addEventListener("click", async () => {
 
 
         logoutHeader.addEventListener("click", async () => {
+            const loadingAnimationDiv = createElement("div", "loadingAnimationDiv", sideBar, "");
+            const loadingAnimation = createElement("div", "loadingAnimation", loadingAnimationDiv, "");
+
 
             const setLogout = await fetch('http://127.0.0.1:8080/logout', {
                 headers: {
@@ -125,6 +128,8 @@ navButton.addEventListener("click", async () => {
 
             if (setLogout.status === 200) {
                 console.log(data.msg)
+                loadingAnimation.style.visibility = "hidden";
+                window.location.href = "http://127.0.0.1:5501/public/frontEnd/components/forms/login.html";
             }
         })
 
