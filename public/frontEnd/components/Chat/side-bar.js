@@ -4,12 +4,18 @@ import { socket } from "./chat-page.js";
 
 
 
+
 let isClick = false;
+
+export let loading;
+
 
 
 const navButton = document.querySelector(".navButton");
 const body = document.querySelector("body");
 const navLine2 = document.querySelector(".navLine2")
+
+
 
 
 let myProfilePicture = "";
@@ -46,9 +52,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 // side bar
 navButton.addEventListener("click", async () => {
-
-
     isClick = !isClick
+
     if (isClick) {
         const sideBar = document.createElement("main");
 
@@ -67,8 +72,12 @@ navButton.addEventListener("click", async () => {
         const sideBarContainer5 = createElement("div", "sideBarContainer5", sideBar, "")
 
 
+
+
+
+
         // sideBar1 elements
-        createElement("img", "sideBarLogo", sideBarContainer1, "https://res.cloudinary.com/doan4g4r9/image/upload/v1757576831/white_on_trans_xxuhpm.png");
+        const sideBarLogo = createElement("img", "sideBarLogo", sideBarContainer1, "https://res.cloudinary.com/doan4g4r9/image/upload/v1757576831/white_on_trans_xxuhpm.png");
         // sideBar2 elements
         const sideBarSearch = createElement("input", "sideBarSearch", sideBarContainer2, "");
         sideBarSearch.placeholder = "Search Messages"
@@ -112,11 +121,18 @@ navButton.addEventListener("click", async () => {
         const logoutHeader = document.querySelector(".logoutHeader");
 
 
-        logoutHeader.addEventListener("click", async () => {
+
+        //loading animations
+
+        const loadingAnimation = () => {
             const loadingAnimationDiv = createElement("div", "loadingAnimationDiv", sideBar, "");
             const loadingAnimation = createElement("div", "loadingAnimation", loadingAnimationDiv, "");
+            return loadingAnimation;
+        }
 
+        logoutHeader.addEventListener("click", async () => {
 
+            loading = loadingAnimation();
             const setLogout = await fetch('http://127.0.0.1:8080/logout', {
                 headers: {
                     Accept: "application/json"
@@ -128,7 +144,7 @@ navButton.addEventListener("click", async () => {
 
             if (setLogout.status === 200) {
                 console.log(data.msg)
-                loadingAnimation.style.visibility = "hidden";
+                loading.style.visibility = "hidden";
                 window.location.href = "http://127.0.0.1:5501/public/frontEnd/components/forms/login.html";
             }
         })
@@ -137,6 +153,9 @@ navButton.addEventListener("click", async () => {
 
     } else {
         const sideBar = document.querySelector(".sideBar")
+
+        sideBar.innerHTML = ""
+
         navLine2.style.transform = 'rotate(90deg)'
         navLine2.style.transition = "transform 0.5s"
         navLine2.style.backgroundColor = "white"

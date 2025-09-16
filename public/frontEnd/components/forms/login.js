@@ -1,9 +1,9 @@
+
+
 const username = document.querySelector(".username");
 const password = document.querySelector(".password");
-const main = document.querySelector(".main");
 const forms = document.querySelector(".forms")
 
-const div = document.createElement("h1");
 forms.addEventListener("submit", async (e) => {
     e.preventDefault();
     const userContent = username.value
