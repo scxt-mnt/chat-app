@@ -81,7 +81,7 @@ navButton.addEventListener("click", async () => {
         // sideBar2 elements
         const sideBarSearch = createElement("input", "sideBarSearch", sideBarContainer2, "");
         sideBarSearch.placeholder = "Search Messages"
-        //sideBar3 elements
+        // sideBar3 elements
         const sideBarReport = createElement("div", "sideBarReport", sideBarContainer3, "")
         createElement("img", "reportLogo", sideBarReport, "https://res.cloudinary.com/doan4g4r9/image/upload/v1757576857/icons8-warning-shield-50_sr2ang.png")
         createElement("h3", "reportHeader", sideBarReport, "Report")
