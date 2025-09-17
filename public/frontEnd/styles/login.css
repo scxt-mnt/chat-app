@@ -8,20 +8,26 @@ body{
     height: 100vh;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    grid-template-rows: 8rem ;
 }
 
 
 .loginContainer{
-    width: 20rem;
     display: flex;
     flex-direction: column;
     gap: 30px;
     align-items: center;
 }
 
+.loginSection{
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10rem 0 10rem 0;
+    background-color: #5BA3F5;
+}
 
 .forms{
     width: auto;
@@ -38,7 +44,8 @@ body{
     padding-left: 2rem;
     outline: none;
     border: none;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid ;
+    background-color: transparent;
  }
 
  .btn-login{
@@ -54,4 +61,10 @@ body{
  .div{
     width: 10rem;
     height: 19rem;
+ }
+
+ .meChatLogo{
+    height: 10rem;
+    margin-top: -10rem;
+
  }
