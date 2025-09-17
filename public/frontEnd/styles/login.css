@@ -1,9 +1,9 @@
-body{
+body {
     padding: 0;
     margin: 0;
 }
 
-.main{
+.main {
     width: 100vw;
     height: 100vh;
     margin: 0;
@@ -13,23 +13,33 @@ body{
 }
 
 
-.loginContainer{
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    align-items: center;
-}
 
-.loginSection{
+.loginSection {
     background-color: black;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 10rem 0 10rem 0;
+    border-radius: 10rem 0 0 0;
     background-color: #5BA3F5;
+    position: relative;
 }
 
-.forms{
+.loginContainer {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    position: absolute;
+}
+
+
+.top-design{
+    display: flex;
+    z-index: 10;
+}
+
+.forms {
     width: auto;
     height: auto;
     display: flex;
@@ -37,34 +47,42 @@ body{
     gap: 10px;
 }
 
- .password, .username{
+.password,
+.username {
     padding-top: 12px;
     padding-bottom: 12px;
     padding-right: 5rem;
     padding-left: 2rem;
     outline: none;
     border: none;
-    border-bottom: 1px solid ;
+    border-bottom: 1px solid white;
     background-color: transparent;
- }
+}
 
- .btn-login{
-    width: 20rem;
-    padding: 10px 0;
+.btn-login {
+    width: 15rem;
+    padding: 7px 0;
     margin-top: 20px;
     align-self: center;
     background-color: rgb(158, 196, 196);
     border: none;
     border-radius: 5px;
- }
+}
 
- .div{
+.div {
     width: 10rem;
     height: 19rem;
- }
+}
 
- .meChatLogo{
+.meChatLogo {
     height: 10rem;
-    margin-top: -10rem;
+    position: absolute;
+    top: 10px;
+}
 
- }
+.convoSymbol {
+    height: 10rem;
+    transform: rotate(-5deg);
+    margin: 5px;
+}
+
