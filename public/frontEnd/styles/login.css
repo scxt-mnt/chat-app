@@ -9,7 +9,7 @@ body {
     margin: 0;
     padding: 0;
     display: grid;
-    grid-template-rows: 8rem ;
+    grid-template-rows: 8rem;
 }
 
 
@@ -19,7 +19,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 10rem 0 0 0;
+    border-radius: 10rem 0 5rem 0;
     background-color: #5BA3F5;
     position: relative;
 }
@@ -31,10 +31,13 @@ body {
     gap: 30px;
     align-items: center;
     position: absolute;
+    color: rgb(27, 58, 63);
+    font-family: "Roboto", sans-serif;
+    font-size: 12px;
 }
 
 
-.top-design{
+.top-design {
     display: flex;
     z-index: 10;
 }
@@ -51,8 +54,8 @@ body {
 .username {
     padding-top: 12px;
     padding-bottom: 12px;
-    padding-right: 5rem;
-    padding-left: 2rem;
+    width: 15rem;
+    padding-left: 10px ;
     outline: none;
     border: none;
     border-bottom: 1px solid white;
@@ -84,5 +87,12 @@ body {
     height: 10rem;
     transform: rotate(-5deg);
     margin: 5px;
+}
+
+.passwordPlaceholder, .usernamePlaceholder {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    margin-left: 10px ;
 }
 
