@@ -19,7 +19,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 10rem 0 5rem 0;
+    border-radius: 5rem 5rem 0 0;
     background-color: #5BA3F5;
     position: relative;
 }
@@ -28,7 +28,7 @@ body {
     height: auto;
     display: flex;
     gap: 10rem;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     font-family: "Roboto", sans-serif;
     font-size: 0.8em;
 }
@@ -51,7 +51,7 @@ body {
 .username {
     padding-top: 12px; 
     padding-bottom: 12px;
-    width: 15rem;
+    width: 20rem;
     padding-left: 10px ;
     outline: none;
     border: none;
@@ -62,13 +62,15 @@ body {
 }
 
 .btn-login {
-    width: 15rem;
+    width: 20rem;
     padding: 7px 0;
     margin-top: 20px;
     align-self: center;
-    background-color: rgb(158, 196, 196);
+    background-color: rgb(187, 199, 199);
     border: none;
     border-radius: 5px;
+    font-weight: 700;
+    margin-top: 40px;
 }
 
 .div {
@@ -84,8 +86,9 @@ body {
 
 .convoSymbol {
     height: 10rem;
-    transform: rotate(-5deg);
-    margin: 5px;
+    z-index: 10;
+    position: relative;
+    right: 40px;
 }
 
 .passwordPlaceholder, .usernamePlaceholder {
@@ -96,3 +99,12 @@ body {
     transition: 100ms ease;
 }
 
+.welcomeMessage{
+    position: absolute;
+    z-index: 0;
+    color: #5BA3F5;
+    font-size: 2rem;
+    font-family: "Roboto", sans-serif;
+    width: 10rem;
+    right: 0;
+}
