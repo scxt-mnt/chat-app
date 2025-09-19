@@ -31,6 +31,7 @@ body {
     color: rgb(255, 255, 255);
     font-family: "Roboto", sans-serif;
     font-size: 0.8em;
+    margin-top: 50px;
 }
 
 
@@ -49,10 +50,10 @@ body {
 
 .password,
 .username {
-    padding-top: 12px; 
+    padding-top: 12px;
     padding-bottom: 12px;
     width: 20rem;
-    padding-left: 10px ;
+    padding-left: 10px;
     outline: none;
     border: none;
     border-bottom: 1px solid white;
@@ -91,15 +92,16 @@ body {
     right: 40px;
 }
 
-.passwordPlaceholder, .usernamePlaceholder {
+.passwordPlaceholder,
+.usernamePlaceholder {
     position: absolute;
     display: flex;
     align-items: center;
-    margin-left: 10px ;
+    margin-left: 10px;
     transition: 100ms ease;
 }
 
-.welcomeMessage{
+.welcomeMessage {
     position: absolute;
     z-index: 0;
     color: #5BA3F5;
@@ -107,4 +109,54 @@ body {
     font-family: "Roboto", sans-serif;
     width: 10rem;
     right: 0;
+}
+
+.errorSec {
+    position: absolute;
+    margin-left: 10px;
+    width: 10rem;
+    height: 1rem;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 7px;
+    border-radius: 10px;
+    font-weight: 700;
+    animation: shake 0.5s ease ;
+}
+
+
+@keyframes shake {
+    0% {
+        transform: translateY(0);
+    }
+
+    25% {
+        transform: translateY(-2px);
+    }
+
+    35% {
+        transform: translateY(2px);
+    }
+
+    50% {
+        transform: translateY(-2px);
+    }
+
+    65% {
+        transform: translateY(2px);
+    }
+
+    75% {
+        transform: translateY(-2px);
+    }
+
+    85% {
+        transform: translateY(2px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
 }
