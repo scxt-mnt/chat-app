@@ -117,13 +117,11 @@ body {
     width: 10rem;
     height: 1rem;
     background-color: red;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin-top: 7px;
     border-radius: 10px;
     font-weight: 700;
-    animation: shake 0.5s ease ;
+    text-align: center;
+    animation: shake 0.5s ease;
 }
 
 

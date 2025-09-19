@@ -1,10 +1,23 @@
 
-
 const username = document.querySelector(".username");
 const password = document.querySelector(".password");
 const forms = document.querySelector(".forms");
 const usernameHeader = document.querySelector(".usernamePlaceholder");
 const passwordHeader = document.querySelector(".passwordPlaceholder");
+const usernameSection = document.querySelector(".usernameSection")
+
+function createElement(elementName, className, target, content) {
+    const element = document.createElement(elementName);
+    element.className = className
+    if ((elementName === "h1" ||
+        elementName === "h2" ||
+        elementName === "h3" ||
+        elementName === "p" ||
+        elementName === "button") && content) element.textContent = content
+    if (elementName === "img" && content) element.src = content
+    target.appendChild(element)
+    return element
+}
 
 username.addEventListener("focus", () => {
     usernameHeader.style.transform = "translateY(-1.5rem)"
@@ -46,7 +59,14 @@ forms.addEventListener("submit", async (e) => {
                 credentials: "include"
             })
             const toJson = await fetchUrl.json();
-            if (fetchUrl.status === 401) return console.log(toJson.msg);
+            if (fetchUrl.status === 401) {
+                console.log(toJson.msg);
+                const errSec = createElement("p", "errorSec", usernameSection, "credentials error");
+
+                [username, password].forEach((el) => el.addEventListener("click", () => {
+                    errSec?.remove();
+                }))
+            }
 
             if (fetchUrl.status === 200) {
                 console.log(toJson.msg)

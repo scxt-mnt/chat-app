@@ -116,8 +116,9 @@ app.post("/userInfo", (req, res) => {
     const id = req.body.userId
     const query = "SELECT * FROM user WHERE id = ?"
     db.query(query, [id], (err, result) => {
-        const user = result[0];
-        if (user.length === 0) return res.status(401).send({ msg: "no user found", data: user })
+        const user = result[0]
+        if (!user) return res.status(401).send({ msg: "no user found"})
+            
         res.status(200).send({ msg: "user details collected", data: user })
     })
 })
