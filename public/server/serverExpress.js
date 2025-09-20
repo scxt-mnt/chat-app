@@ -134,21 +134,23 @@ let myUserId;
 io.on("connection", (socket) => {
     console.log("user connected " + socket.id)
 
+
+    
+    socket.on("userId", (userId) => {
+        console.log(userId);        
+        users[userId] = socket.id
+        myUserId = userId
+        console.log(users[userId])
+    })
+
+
     socket.broadcast.emit("activeUser", { isActive: true });
     socket.emit("ownActiveUser", { isActive: true });
-
-
 
     socket.on("disconnect", () => {
         delete users[myUserId]
         console.log("user disconnected " + socket.id)
         socket.broadcast.emit("activeUser", { isActive: false })
-    })
-
-    socket.on("userId", (userId) => {
-        users[userId] = socket.id
-        myUserId = userId
-        console.log(users)
     })
 
     socket.on("message", (data, targetUserId) => {

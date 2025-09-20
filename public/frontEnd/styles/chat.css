@@ -77,7 +77,7 @@ body {
     align-items: flex-end;
     flex-direction: column;
     padding: 10px;
-    gap: 0.5rem;
+    gap: 5px;
     overflow-y: auto;
     padding-bottom: 1rem;
     background-color: white;
@@ -88,7 +88,6 @@ body {
     align-self: start;
     margin-left: 1rem;
     background-color: rgb(128, 161, 156);
-    white-space: auto;
     overflow-wrap: break-word;
 }
 
