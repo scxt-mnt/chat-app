@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 messageButton.addEventListener("click", () => {
     const messageValue = messageInput.value
     if (messageValue) {
-        createElement("div", "messageBox", chatSection, messageValue)
+        createElement("p", "messageBox", chatSection, messageValue)
         socket.emit("message", messageValue, targetUserId)
         chatSection.scrollTop = chatSection.scrollHeight
     }
@@ -103,7 +103,7 @@ socket.on("activeUser", (data) => {
 
 socket.on("feedback", (data) => {
     const senderBubble = createElement("div", "senderBubble", chatSection, "");
-    createElement("div", "senderMessage", senderBubble, data)
+    createElement("p", "senderMessage", senderBubble, data)
     createElement("img", "senderImage", senderBubble, profileImage)
     chatSection.scrollTop = chatSection.scrollHeight
 })
