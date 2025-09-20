@@ -111,8 +111,8 @@ navButton.addEventListener("click", async () => {
         const sideBarProfile = createElement("div", "sideBarProfile", sideBarContainer5, "");
         const sideBarProfileDiv = createElement("div", "sideBarProfiileDiv", sideBarProfile, "");
         createElement("img", "sideBarProfileImg", sideBarProfileDiv, myProfilePicture);
-        createElement("div", "sideBarProfileHeaders", sideBarProfileDiv, `${myName} ${myLastName}`);
-        console.log(isActive)
+        createElement("p", "sideBarProfileHeaders", sideBarProfileDiv, `${myName} ${myLastName}`);
+        console.log(myName)
         if (isActive) {
             createElement("div", "myStatus", sideBarProfileDiv, "");
         }

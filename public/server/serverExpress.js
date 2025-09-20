@@ -104,7 +104,8 @@ app.get('/get-Details', (req, res) => {
                 return res.status(401).send({ msg: "no account fetched" })
             }
             if (user) {
-                res.status(200).send({ msg: "succesfully fetched data", data: { imgLink: user.ProfileLink, name: user.name, lastName: user.lastName, id: user.id } })
+                res.status(200).send({ msg: "succesfully fetched data", data: { 
+                    imgLink: user.ProfileLink, name: user.name, lastName: user.lastName, id: user.id } })
             }
         })
     }
@@ -118,7 +119,7 @@ app.post("/userInfo", (req, res) => {
     db.query(query, [id], (err, result) => {
         const user = result[0]
         if (!user) return res.status(401).send({ msg: "no user found"})
-            
+
         res.status(200).send({ msg: "user details collected", data: user })
     })
 })

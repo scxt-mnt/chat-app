@@ -60,12 +60,21 @@ forms.addEventListener("submit", async (e) => {
             })
             const toJson = await fetchUrl.json();
             if (fetchUrl.status === 401) {
-                console.log(toJson.msg);
-                const errSec = createElement("p", "errorSec", usernameSection, "credentials error");
+                let errSection = document.querySelector(".errorSec");
 
-                [username, password].forEach((el) => el.addEventListener("click", () => {
-                    errSec?.remove();
-                }))
+
+                if (!errSection) {
+                    errSection = createElement("p", "errorSec", usernameSection, "credentials error");
+
+                    [username, password].forEach((el) => el.addEventListener("click", () => {
+                        errSection?.remove();
+                    }))
+                } else {
+                    errSection.textContent = "credentials error"
+                    [username, password].forEach((el) => el.addEventListener("click", () => {
+                        errSection?.remove();
+                    }))
+                }
             }
 
             if (fetchUrl.status === 200) {
