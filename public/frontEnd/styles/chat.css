@@ -399,3 +399,11 @@ bottom: 3.5rem;
     }
 
 }
+
+
+  .loginSection,
+    .main,
+    .loginSection,
+     .loginContainer {
+        all: unset;
+    }
