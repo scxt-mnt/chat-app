@@ -40,8 +40,7 @@
     }
 
     #loginSection {
-        background-color: #5BA3F5;
-        border-radius: 100vh 0 0 100vh;
+        background-color: #5BA3F5;        border-radius: 20rem 0 0 20rem;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -58,11 +57,16 @@
         font-weight: 700;
     }
 
-    #chatLogo{
-        height:15rem;
+    #chatLogo {
+        height: 15rem;
     }
 
-    .chatText{
+    .chatText {
         font-size: 5rem;
+    }
+
+    #username, #password {
+        color: white;
+        font-size: 1em;
     }
 }

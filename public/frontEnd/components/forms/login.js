@@ -20,11 +20,11 @@ function createElement(elementName, className, target, content) {
 }
 
 username.addEventListener("focus", () => {
-    usernameHeader.style.transform = "translateY(-1.5rem)"
+    usernameHeader.style.transform = "translateY(-1.8rem) scale(1.1)"
 });
 
 password.addEventListener("focus", () => {
-    passwordHeader.style.transform = "translateY(-1.5rem)"
+    passwordHeader.style.transform = "translateY(-1.8rem) scale(1.1)"
 });
 
 
