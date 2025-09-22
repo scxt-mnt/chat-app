@@ -9,10 +9,10 @@
         all: unset;
     }
 
-    #idConvoSymbol, #meChatLogo {
+    #idConvoSymbol,
+    #meChatLogo {
         display: none;
     }
-
 
 
 
@@ -36,6 +36,7 @@
     #main {
         display: grid;
         grid-template-columns: 1fr 1fr;
+        font-family: "Roboto", sans-serif;
     }
 
     #loginSection {
@@ -45,5 +46,23 @@
         justify-content: center;
         align-items: center;
         color: aliceblue;
+        padding: 5rem;
+    }
+
+    #welcomeMessage {
+        width: 20rem;
+        font-size: 4em;
+        margin-right: 10px;
+        font-family: inherit;
+        color: #5BA3F5;
+        font-weight: 700;
+    }
+
+    #chatLogo{
+        height:15rem;
+    }
+
+    .chatText{
+        font-size: 5rem;
     }
 }

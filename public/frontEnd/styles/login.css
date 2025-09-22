@@ -10,6 +10,7 @@ body {
     padding: 0;
     display: grid;
     grid-template-rows: 8rem;
+    background-color: #1D2A42;
 }
 
 
@@ -38,6 +39,7 @@ body {
 .top-design {
     display: flex;
     z-index: 10;
+    background-color: #1D2A42;
 }
 
 .forms {
