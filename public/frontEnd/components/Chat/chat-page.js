@@ -3,7 +3,9 @@ import { io } from "https://cdn.socket.io/4.7.2/socket.io.esm.min.js";
 const messageButton = document.querySelector(".sendButton")
 const messageInput = document.querySelector(".messageInput");
 const chatSection = document.querySelector(".chatSection");
-const profileNav = document.querySelector(".profileNav")
+const profileNav = document.querySelector(".profileNav");
+const imageButton = document.querySelector(".imageButton");
+const fileChooser = document.querySelector(".fileChooser");
 
 
 export let isActive;
@@ -109,5 +111,7 @@ socket.on("feedback", (data) => {
 })
 
 
-
+imageButton.addEventListener("click", () => {
+    fileChooser.click();
+})
 

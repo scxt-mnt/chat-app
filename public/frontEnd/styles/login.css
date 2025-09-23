@@ -102,6 +102,7 @@ body {
     align-items: center;
     margin-left: 10px;
     transition: 100ms ease;
+    color: #1D2A42;
 }
 
 .welcomeMessage {

@@ -72,6 +72,7 @@ body {
     border-radius: 1rem;
     overflow-wrap: break-word;
     color: black;
+    margin: 0;
 }
 
 .chatSection {
@@ -402,3 +403,6 @@ bottom: 3.5rem;
 }
 
 
+.fileChooser{
+    display: none;
+}
