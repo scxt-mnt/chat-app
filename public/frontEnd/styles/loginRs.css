@@ -44,7 +44,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        color: aliceblue;
+        color: #1D2A42;
         padding: 5rem;
     }
 
@@ -68,5 +68,8 @@
     #username, #password {
         color: white;
         font-size: 1em;
+    }
+    .errorSec{
+        color: white;
     }
 }
