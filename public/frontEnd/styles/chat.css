@@ -23,6 +23,7 @@ body {
     justify-content: center;
     gap: 10px;
     background-color: white;
+    padding: 0 20px 0 20px;
 }
 
 .imageButton {
@@ -36,6 +37,7 @@ body {
 }
 
 .messageInput {
+    width: 80%;
     height: 2rem;
     padding: 5px 3rem 1px 1.5rem;
     border-radius: 20px;

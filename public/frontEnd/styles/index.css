@@ -39,10 +39,11 @@ body {
     flex-direction: column;
     align-items: center;
     border-radius: 1rem 1rem 0 0;
+    padding: 1rem;
 }
 
 .accountCard {
-    width: 18rem;
+    width: 90%;
     height: 4rem;
     display: flex;
     align-items: center;
@@ -72,5 +73,4 @@ body {
 .messagesHeader {
     color: rgb(81, 186, 212);
     font-family: "Roboto", sans-serif;
-
 }
