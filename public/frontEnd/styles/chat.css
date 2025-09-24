@@ -412,4 +412,17 @@ bottom: 3.5rem;
     max-height: 15rem;
     width: auto;
     max-width: 90%;
+    border-radius: 10px;
+}
+
+.imagePreviewContainer{
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    background-color: rgba(225, 225, 225, 0.1);
+    z-index: 30;
 }

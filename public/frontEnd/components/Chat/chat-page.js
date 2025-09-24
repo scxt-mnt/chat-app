@@ -6,9 +6,24 @@ const chatSection = document.querySelector(".chatSection");
 const profileNav = document.querySelector(".profileNav");
 const imageButton = document.querySelector(".imageButton");
 const fileChooser = document.querySelector(".fileChooser");
+const sentImage = document.querySelector(".sentImage");
+const body = document.querySelector("body");
 
 
 export let isActive;
+
+
+fileChooser.addEventListener("change", () => {
+    const imagePreviewContainer = document.createElement("div");
+    imagePreviewContainer.className = "imagePreviewContainer"
+    body.prepend(imagePreviewContainer);
+
+    const imagePreview = createElement("img", "sentImage", imagePreviewContainer, "");
+
+    const file = fileChooser.files[0];
+       imagePreview.src = URL.createObjectURL(file);
+
+})
 
 export function createElement(elementName, className, target, content) {
     const element = document.createElement(elementName);
