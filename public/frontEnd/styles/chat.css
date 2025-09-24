@@ -406,3 +406,10 @@ bottom: 3.5rem;
 .fileChooser{
     display: none;
 }
+
+.sentImage{
+    height:auto;
+    max-height: 15rem;
+    width: auto;
+    max-width: 90%;
+}
