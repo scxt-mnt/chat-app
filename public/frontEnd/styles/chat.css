@@ -407,12 +407,18 @@ bottom: 3.5rem;
     display: none;
 }
 
-.sentImage{
+.sentImage, .receiveImage {
     height:auto;
     max-height: 15rem;
     width: auto;
     max-width: 90%;
     border-radius: 10px;
+}
+
+.receiveImage{
+    display: flex;
+    align-self: start;
+    margin: 0;
 }
 
 .imagePreviewContainer{

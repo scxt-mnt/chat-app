@@ -49,6 +49,8 @@ fileChooser.addEventListener("change", () => {
         }
 
         body.removeChild(imagePreviewContainer);
+        createElement("img", "sentImage", chatSection, URL.createObjectURL(file));
+
     })
 })
 
@@ -162,5 +164,5 @@ socket.on("receiveMessage", (data) => {
     const blob = new Blob([data])
     console.log("hello")
     const bin = URL.createObjectURL(blob);
-    createElement("img", "sentImage", chatSection, bin);
+    createElement("img", "receiveImage", chatSection, bin);
 })
