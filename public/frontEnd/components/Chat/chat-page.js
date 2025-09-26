@@ -23,7 +23,7 @@ fileChooser.addEventListener("change", () => {
     const imagePreview = createElement("img", "sentImage", imagePreviewContainer, "");
 
     const buttonContainer = createElement("div", "buttonContainer", imagePreviewContainer, "");
-    const removeImage = createElement("button", "removeImage", buttonContainer, "remove");
+    const removeImage = createElement("button", "removeImage", buttonContainer, "cancel");
     createElement("button", "sendImage", buttonContainer, "send");
 
     const file = fileChooser.files[0];

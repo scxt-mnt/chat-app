@@ -431,7 +431,10 @@ bottom: 3.5rem;
 
 .buttonContainer{
     display: flex;
-    gap: 5rem;
+    justify-content: end;
+    width: 100vw;
+    padding-right: 2.5rem;
+    gap: 1rem;
 }
 
 .sendImage, .removeImage{
@@ -446,6 +449,8 @@ bottom: 3.5rem;
     cursor: pointer;
 } 
 
+
 .removeImage{
-    background-color: red;
+    background-color: transparent;
+    border: 2px solid rgb(255, 255, 255);
 }
