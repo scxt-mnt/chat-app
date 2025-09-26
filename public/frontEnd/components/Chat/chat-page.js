@@ -14,6 +14,8 @@ export let isActive;
 
 
 fileChooser.addEventListener("change", () => {
+
+
     const imagePreviewContainer = document.createElement("div");
     imagePreviewContainer.className = "imagePreviewContainer"
     body.prepend(imagePreviewContainer);
@@ -21,11 +23,18 @@ fileChooser.addEventListener("change", () => {
     const imagePreview = createElement("img", "sentImage", imagePreviewContainer, "");
 
     const buttonContainer = createElement("div", "buttonContainer", imagePreviewContainer, "");
-    createElement("button", "removeImage", buttonContainer, "remove");
+    const removeImage = createElement("button", "removeImage", buttonContainer, "remove");
     createElement("button", "sendImage", buttonContainer, "send");
 
     const file = fileChooser.files[0];
     imagePreview.src = URL.createObjectURL(file);
+
+    
+    removeImage.addEventListener("click", () => {   
+        fileChooser.value = "";   
+        body.removeChild(imagePreviewContainer)
+     });
+
 
 })
 
@@ -80,7 +89,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
 })
-
 
 messageButton.addEventListener("click", () => {
     const messageValue = messageInput.value
