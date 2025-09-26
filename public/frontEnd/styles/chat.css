@@ -425,4 +425,27 @@ bottom: 3.5rem;
     backdrop-filter: blur(10px);
     background-color: rgba(225, 225, 225, 0.1);
     z-index: 30;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.buttonContainer{
+    display: flex;
+    gap: 10rem;
+}
+
+.sendImage, .removeImage{
+    padding: 2px 1rem 2px 1rem;
+    background-color: #2b9e27;
+    border: none;
+    font-family: "Roboto", sans-serif;
+    color: white;
+    font-weight: 600;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+} 
+
+.removeImage{
+    background-color: red;
 }
