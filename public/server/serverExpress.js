@@ -133,8 +133,6 @@ let myUserId;
 
 io.on("connection", (socket) => {
     console.log("user connected " + socket.id)
-
-
     
     socket.on("userId", (userId) => {
         console.log(userId);        
@@ -158,11 +156,15 @@ io.on("connection", (socket) => {
         io.to(users[targetUserId]).emit("feedback", data)
     })
 
+    socket.on("sendImage", (imageData, targetUserId) => {
+        io.to(users[targetUserId]).emit("receiveMessage", imageData); 
+    })
+
+
 })
 
 app.get('/logout',(req, res) => {
     res.clearCookie("token");
-
     res.status(200).send({msg: "successfuly log out"});
 })
 

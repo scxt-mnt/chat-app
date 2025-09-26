@@ -6,11 +6,16 @@ const chatSection = document.querySelector(".chatSection");
 const profileNav = document.querySelector(".profileNav");
 const imageButton = document.querySelector(".imageButton");
 const fileChooser = document.querySelector(".fileChooser");
-const sentImage = document.querySelector(".sentImage");
 const body = document.querySelector("body");
 
 
 export let isActive;
+
+export const socket = io("http://127.0.0.1:8080");
+const params = new URLSearchParams(window.location.search)
+const targetUserId = params.get("userId")
+let profileImage = ""
+
 
 
 fileChooser.addEventListener("change", () => {
@@ -24,19 +29,32 @@ fileChooser.addEventListener("change", () => {
 
     const buttonContainer = createElement("div", "buttonContainer", imagePreviewContainer, "");
     const removeImage = createElement("button", "removeImage", buttonContainer, "cancel");
-    createElement("button", "sendImage", buttonContainer, "send");
+    const sendImage = createElement("button", "sendImage", buttonContainer, "send");
 
     const file = fileChooser.files[0];
     imagePreview.src = URL.createObjectURL(file);
 
-    
-    removeImage.addEventListener("click", () => {   
-        fileChooser.value = "";   
+
+    removeImage.addEventListener("click", () => {
+        fileChooser.value = "";
         body.removeChild(imagePreviewContainer)
-     });
+    });
 
 
+    sendImage.addEventListener("click", () => {
+        const reader = new FileReader();
+        reader.readAsArrayBuffer(file)
+        reader.onload = () => {
+            socket.emit("sendImage", reader.result, targetUserId);
+        }
+
+        body.removeChild(imagePreviewContainer);
+    })
 })
+
+
+
+
 
 export function createElement(elementName, className, target, content) {
     const element = document.createElement(elementName);
@@ -53,10 +71,6 @@ export function createElement(elementName, className, target, content) {
 
 
 
-export const socket = io("http://127.0.0.1:8080");
-const params = new URLSearchParams(window.location.search)
-const targetUserId = params.get("userId")
-let profileImage = ""
 
 
 
@@ -142,3 +156,11 @@ imageButton.addEventListener("click", () => {
     fileChooser.click();
 })
 
+
+socket.on("receiveMessage", (data) => {
+
+    const blob = new Blob([data])
+    console.log("hello")
+    const bin = URL.createObjectURL(blob);
+    createElement("img", "sentImage", chatSection, bin);
+})
