@@ -169,3 +169,7 @@ body {
 .chatLogo{
     display: none;
 }
+
+.loginHeader{
+    display: none;
+}

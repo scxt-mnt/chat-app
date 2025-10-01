@@ -86,6 +86,7 @@
     }
 
     #loginContainer{
+        display: block;
         width: 100vw;
     } 
 }
