@@ -90,6 +90,13 @@
         display: block;
         width: 100vw;
     } 
+    .boxForm{
+        height: 15rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        width: 21rem;
+    }
 
     .forgotHeader{
         align-self: end;
