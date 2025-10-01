@@ -458,5 +458,6 @@ bottom: 3.5rem;
 
 .removeImage{
     background-color: transparent;
-    border: 2px solid rgb(255, 255, 255);
+    border: 2px solid rgb(170, 163, 163);
+    color: rgb(100, 84, 84);
 }
