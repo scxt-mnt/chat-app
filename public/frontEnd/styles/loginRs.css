@@ -5,7 +5,8 @@
     #loginContainer,
     #top-design,
     .welcomeMessage,
-    #chatLogo {
+    #chatLogo,
+    .loginHeader {
         all: unset;
     }
 
@@ -78,7 +79,7 @@
     #loginHeader{
         width: 100vw;
         margin-left: 1rem;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
     }
 
     #btn-login{
@@ -89,4 +90,8 @@
         display: block;
         width: 100vw;
     } 
+
+    .forgotHeader{
+        align-self: end;
+    }
 }
