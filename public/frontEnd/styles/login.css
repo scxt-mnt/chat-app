@@ -65,6 +65,10 @@ body {
     font-weight: 600;
 }
 
+.password{
+    margin-top: 1rem;
+}
+
 .btn-login {
     width: 20rem;
     padding: 7px 0;
@@ -102,6 +106,10 @@ body {
     margin-left: 10px;
     transition: 100ms ease;
     color: #1D2A42;
+}
+
+.passwordPlaceholder{
+    margin-top: 2rem;
 }
 
 .welcomeMessage {
