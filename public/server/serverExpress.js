@@ -65,7 +65,7 @@ app.post('/login', (req, res) => {
     const passData = req.body.pass
 
     if (userData && passData) {
-        const query = "SELECT * FROM userAuth WHERE name = ? AND lastName = ?"
+        const query = "SELECT * FROM user WHERE name = ? AND lastName = ?"
         db.query(query, [userData, passData], (err, result) => {
             if (err) return console.log(err)
             const user = result[0];

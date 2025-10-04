@@ -7,22 +7,36 @@ body {
     width: 100vw;
     background-color: #1D2A42;
     display: grid;
-    grid-template-rows: 0.5fr 1fr;
+    grid-template-rows: 0.4fr 1fr;
+    font-family: "Roboto", sans-serif;
+
 }
 
 
 
 .boxSection {
-    background-color: white;
-    padding: 1px;
+    padding: 1px 20px 20px 20px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: start;
 }
 
 .boxForm {
-    height: 18rem;
-    width: 90%;
+    height: 21rem;
+    width: 100%;
     max-width: 25rem;
-    background-color: black;
+    background-color: white;
+    margin-bottom: 5rem;
+}
+
+.headerSection {
+    color: white;
+    font-size: x-large;
+    display: flex;
+    align-items: end;
+    padding-left: 20px;
+}
+
+.personalDetails{
+    margin-bottom: 10px;
 }
