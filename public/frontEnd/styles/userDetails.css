@@ -61,3 +61,11 @@ body {
     height: 15px;
     opacity: 50%;
 }
+
+.fileSelector{
+    display: none;
+}
+
+.uploadSection:active{
+    background-color: rgb(226, 225, 225);
+}
