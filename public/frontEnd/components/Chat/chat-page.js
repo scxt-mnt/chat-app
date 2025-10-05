@@ -162,7 +162,7 @@ imageButton.addEventListener("click", () => {
 socket.on("receiveMessage", (data) => {
 
     const blob = new Blob([data])
-    console.log("hello")
+    console.log("hello");
     const bin = URL.createObjectURL(blob);
     createElement("img", "receiveImage", chatSection, bin);
 })
