@@ -34,6 +34,12 @@ fileChooser.addEventListener('change', () => {
     const uploadButton = createElement("button", "uploadButton", buttons, "upload");
     const file = fileChooser.files[0];
     previewImage.src = URL.createObjectURL(file);
+
+    removeButton.addEventListener("click", () => {
+        fileChooser.value = "";
+        body.removeChild(preview);
+    });
+
 });
 
 
