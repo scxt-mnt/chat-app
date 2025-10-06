@@ -119,3 +119,15 @@ body {
     border: none;
     color: white;
 }
+
+.imagesContainer{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.imageUploaded{
+    height: 8rem;
+    width: 100%;
+    border-bottom: solid grey 1px;
+}
