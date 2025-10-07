@@ -8,6 +8,20 @@ const imageButton = document.querySelector(".imageButton");
 const fileChooser = document.querySelector(".fileChooser");
 const body = document.querySelector("body");
 
+export function createElement(elementName, className, target, content) {
+    const element = document.createElement(elementName);
+    element.className = className
+    if ((elementName === "h1" ||
+        elementName === "h2" ||
+        elementName === "h3" ||
+        elementName === "p" ||
+        elementName === "button") && content) element.textContent = content
+    if (elementName === "img" && content) element.src = content
+    target.appendChild(element)
+    return element
+}
+
+
 
 export let isActive;
 

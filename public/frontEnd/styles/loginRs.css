@@ -38,6 +38,7 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         font-family: "Roboto", sans-serif;
+        overflow: hidden;
     }
 
     #loginSection {
@@ -47,7 +48,7 @@
         justify-content: center;
         align-items: center;
         color: #1D2A42;
-        padding: 10% 10% 10% 40%;
+        padding: 10px 10px 10px 15%;
         flex-direction: column;
     }
 
