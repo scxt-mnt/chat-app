@@ -49,6 +49,8 @@ fileChooser.addEventListener('change', () => {
         body.removeChild(preview);
 
         btnRemoveImage.addEventListener("click", () => {
+            uploadSection.disabled = false;
+            fileChooser.value = ""
             uploadHeader.textContent = "Upload Profile"
             uploadSection.removeChild(btnRemoveImage);
         })

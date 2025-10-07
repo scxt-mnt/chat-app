@@ -1,28 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="../../../styles/userDetails.css" rel="stylesheet"/>
+    <link href="../../../styles/userDetails.css" rel="stylesheet" />
     <title>user details</title>
 </head>
+
 <body>
-    
+
     <main class="main">
         <section class="headerSection">
-            <h1 class="personalDetails">Personal <br/> Details</h1>
+            <h1 class="personalDetails">Personal <br /> Details</h1>
         </section>
         <section class="boxSection">
             <div class="boxForm">
-                <input accept="image/*" class="fileSelector" type="file"/>
+                <input accept="image/*" class="fileSelector" type="file" />
                 <button class="uploadSection">
-                    <img class="uploadImage" src="https://res.cloudinary.com/doan4g4r9/image/upload/v1759576580/icons8-image-64_yqqmle.png"/>
+                    <img class="uploadImage"
+                        src="https://res.cloudinary.com/doan4g4r9/image/upload/v1759576580/icons8-image-64_yqqmle.png" />
                     <p class="uploadHeader">Upload Profile</p>
                 </button>
-                <div class="formSection"></div>
+                <section class="formSection">
+                    <form class="formContainer">
+                        <div class="nameContainer">
+                            <p class="nameHeader">name</p>
+                            <input class="name" type="text" />
+                        </div>
+                        <div class="lastNameContainer">
+                            <p class="lastNameHeader">last name</p>
+                            <input class="name" type="text" />
+                        </div>
+                    </form>
+                    <div class="btnContainer">
+                        <button class="btnChatButton">Chat</button>
+                    </div>
+                </section>
             </div>
         </section>
     </main>
     <script type="module" src="./userDetails.js"> </script>
 </body>
+
 </html>
