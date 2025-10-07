@@ -55,6 +55,7 @@ body {
     border: none;
     border-bottom: rgb(209, 203, 203) solid 1px;
     cursor: pointer;
+    position: relative;
 }
 
 .uploadImage {
@@ -130,4 +131,15 @@ body {
     height: 8rem;
     width: 100%;
     border-bottom: solid grey 1px;
+}
+
+.btnRemoveImage{
+    position: absolute;
+    top: 5px;
+    right: 5px;    
+    background-color: transparent;
+    border: none;
+    color: red;
+    font-weight: 700;
+    cursor: pointer;
 }

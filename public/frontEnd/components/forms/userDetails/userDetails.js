@@ -1,8 +1,8 @@
 const fileChooser = document.querySelector(".fileSelector");
 const uploadSection = document.querySelector(".uploadSection");
-
-const boxForm = document.querySelector(".boxForm");
 const body = document.querySelector("body");
+const uploadHeader = document.querySelector(".uploadHeader");
+
 
 export function createElement(elementName, className, target, content) {
     const element = document.createElement(elementName);
@@ -43,15 +43,16 @@ fileChooser.addEventListener('change', () => {
     });
 
     uploadButton.addEventListener("click", () => {
-        boxForm.removeChild(uploadSection)
+        const btnRemoveImage = createElement("button", "btnRemoveImage", uploadSection, "X")
+        uploadHeader.textContent = "image uploaded"
+        uploadSection.disabled = true;
         body.removeChild(preview);
-        const imageContainer = document.createElement("div");
-        imageContainer.className = "imageContainer";
-        boxForm.prepend(imageContainer);
 
-        const imageSemiContainer = createElement("div", "imageSemiContainer", imageContainer, "")
+        btnRemoveImage.addEventListener("click", () => {
+            uploadHeader.textContent = "Upload Profile"
+            uploadSection.removeChild(btnRemoveImage);
+        })
 
-        createElement("img", "imageUploaded", imageSemiContainer, image)
 
     });
 
