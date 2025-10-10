@@ -8,6 +8,7 @@ body {
     grid-template-rows: 1fr 1fr 0.4fr;
     background-color: #1D2A42;
     font-family: 'Roboto', sans-serif;
+    color: white;
 }
 
 .signupSection {
@@ -49,8 +50,14 @@ body {
     border-color: #F26063;
 }
 
-.header{
+.header {
     display: flex;
     align-items: end;
     padding: 10px;
+    font-size: x-large;
+}
+
+.loginHeader{
+    display: flex;
+    justify-content: center;
 }
