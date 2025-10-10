@@ -6,6 +6,9 @@ import jwt from 'jsonwebtoken'
 import cookieParser from 'cookie-parser';
 import { Server } from 'socket.io';
 import http from "http"
+import passport from 'passport';
+import session from 'express-session'
+import { Strategy as GoogleStrategy } from "passport-google-oauth20"
 dotenv.config();
 const app = express();
 app.use(cors({
@@ -15,6 +18,9 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(session({ secret: 'secret', resave: false, saveUninitialized: true }));
+app.use(passport.session());
+app.use(passport.initialize());
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
@@ -104,8 +110,11 @@ app.get('/get-Details', (req, res) => {
                 return res.status(401).send({ msg: "no account fetched" })
             }
             if (user) {
-                res.status(200).send({ msg: "succesfully fetched data", data: { 
-                    imgLink: user.ProfileLink, name: user.name, lastName: user.lastName, id: user.id } })
+                res.status(200).send({
+                    msg: "succesfully fetched data", data: {
+                        imgLink: user.ProfileLink, name: user.name, lastName: user.lastName, id: user.id
+                    }
+                })
             }
         })
     }
@@ -118,7 +127,7 @@ app.post("/userInfo", (req, res) => {
     const query = "SELECT * FROM user WHERE id = ?"
     db.query(query, [id], (err, result) => {
         const user = result[0]
-        if (!user) return res.status(401).send({ msg: "no user found"})
+        if (!user) return res.status(401).send({ msg: "no user found" })
 
         res.status(200).send({ msg: "user details collected", data: user })
     })
@@ -133,9 +142,9 @@ let myUserId;
 
 io.on("connection", (socket) => {
     console.log("user connected " + socket.id)
-    
+
     socket.on("userId", (userId) => {
-        console.log(userId);        
+        console.log(userId);
         users[userId] = socket.id
         myUserId = userId
         console.log(users[userId])
@@ -157,14 +166,36 @@ io.on("connection", (socket) => {
     })
 
     socket.on("sendImage", (imageData, targetUserId) => {
-        io.to(users[targetUserId]).emit("receiveMessage", imageData); 
+        io.to(users[targetUserId]).emit("receiveMessage", imageData);
     })
 
 
 })
 
-app.get('/logout',(req, res) => {
+app.get('/logout', (req, res) => {
     res.clearCookie("token");
-    res.status(200).send({msg: "successfuly log out"});
+    res.status(200).send({ msg: "successfuly log out" });
 })
 
+const GOOGLESECRET = process.env.googleSecret
+
+passport.serializeUser((user, done) => done(null, user));
+passport.deserializeUser((obj, done) => done(null, obj));
+
+passport.use(new GoogleStrategy({
+    clientID: "60338858015-63db7cb3l50a9k1dpj999nbmndevbcnc.apps.googleusercontent.com",
+    clientSecret: GOOGLESECRET,
+    callbackURL: "http://127.0.0.1:8080/auth/google/callback"
+},
+    (accessToken, refreshToken, profile, done) => {
+        return done(null, profile);
+    })
+)
+
+
+app.get('/auth/google', passport.authenticate("google", { scope: ["profile", "email"] }))
+
+app.get("/auth/google/callback",
+    passport.authenticate("google", { failureRedirect: '/login' }),
+    (req, res) => { res.redirect("/login") }
+);
