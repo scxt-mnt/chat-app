@@ -9,6 +9,7 @@ body {
     background-color: #1D2A42;
     font-family: 'Roboto', sans-serif;
     color: white;
+    
 }
 
 .signupSection {
@@ -25,20 +26,31 @@ body {
     gap: 20px;
     align-items: center;
     justify-content: center;
+    
 }
 
 .googleBox,
 .instagramBox,
 .facebookBox {
     height: 3.5rem;
-    width: 90vw;
+    width: 85vw;
 }
 
 .googleBox,
 .facebookBox,
 .instagramBox {
     border: 1px solid white;
-    border-radius: 5px;
+    max-width: 25rem;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-left: 20px;
+    background-color: transparent;
+    color: white;
+    font-weight: 1000;
+    cursor: pointer;
+    min-width: 5rem;
 }
 
 .facebookBox {
@@ -55,9 +67,37 @@ body {
     align-items: end;
     padding: 10px;
     font-size: x-large;
+    justify-content: center;
 }
 
 .loginHeader{
     display: flex;
     justify-content: center;
+  }
+
+.loginDir{
+    color: white;
+    border: none; 
+    cursor: pointer;
 }
+
+.googleImage, .faceImage, .instaImage{
+    height: 2rem;
+}
+
+.googleBox:hover{
+    transition: 1s ease;
+    background-color: white;
+}
+
+.facebookBox:hover{
+    transition: 1s ease;
+    background-color: #6976FF;
+    color: #6976FF;
+}
+.instagramBox:hover{
+    transition: 1s ease;
+    background-color: #F26063;
+    color: #F26063
+}
+
