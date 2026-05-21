@@ -11,6 +11,8 @@ import session from 'express-session'
 import { Strategy as GoogleStrategy } from "passport-google-oauth20"
 dotenv.config();
 const app = express();
+const GOOGLESECRET = process.env.googleSecret
+
 app.use(cors({
     origin: "http://127.0.0.1:5501",
     credentials: true
@@ -18,7 +20,7 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(session({ secret: 'secret', resave: false, saveUninitialized: true }));
+app.use(session({ secret: GOOGLESECRET, resave: false, saveUninitialized: true }));
 app.use(passport.session());
 app.use(passport.initialize());
 const server = http.createServer(app);
@@ -177,7 +179,6 @@ app.get('/logout', (req, res) => {
     res.status(200).send({ msg: "successfuly log out" });
 })
 
-const GOOGLESECRET = process.env.googleSecret
 
 passport.serializeUser((user, done) => done(null, user));
 passport.deserializeUser((obj, done) => done(null, obj));

@@ -1,103 +1,245 @@
+:root {
+    --page: #1D2A42;
+    --panel: rgba(255, 255, 255, 0.08);
+    --line: rgba(255, 255, 255, 0.2);
+    --text: #ffffff;
+    --muted: rgba(255, 255, 255, 0.62);
+    --accent: #5BA3F5;
+    --google: #ffffff;
+    --facebook: #6976FF;
+    --instagram: #F26063;
+}
+
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
+    min-width: 320px;
+    background-color: var(--page);
 }
 
 .main {
-    height: 100vh;
+    min-height: 100vh;
+    min-height: 100svh;
     display: grid;
-    grid-template-rows: 1fr 1fr 0.4fr;
-    background-color: #1D2A42;
-    font-family: 'Roboto', sans-serif;
-    color: white;
-    
+    grid-template-rows: auto 1fr auto;
+    background:
+        radial-gradient(circle at 18% 12%, rgba(91, 163, 245, 0.26), transparent 16rem),
+        radial-gradient(circle at 86% 8%, rgba(105, 118, 255, 0.2), transparent 18rem),
+        linear-gradient(145deg, #101827 0%, #1D2A42 58%, #101827 100%);
+    color: var(--text);
+    font-family: "Roboto", Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(1rem, 3vh, 1.7rem) 1rem 0.7rem;
+}
+
+.brandMark {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.45rem 0.75rem 0.45rem 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+    background-color: rgba(255, 255, 255, 0.075);
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 0.82rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.14);
+    backdrop-filter: blur(16px);
+}
+
+.chatLogo {
+    width: 2rem;
+    height: auto;
+    filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.22));
 }
 
 .signupSection {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: start;
+    padding: 0 1.15rem 1rem;
 }
 
 .signupBox {
-    height: 16rem;
-    width: 100vw;
+    width: min(100%, 25rem);
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    align-items: center;
-    justify-content: center;
-    
+    gap: 0.9rem;
+    padding: 1.05rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1.35rem;
+    background-color: var(--panel);
+    box-shadow: 0 28px 72px rgba(0, 0, 0, 0.24);
+    backdrop-filter: blur(18px);
 }
 
-.googleBox,
-.instagramBox,
-.facebookBox {
-    height: 3.5rem;
-    width: 85vw;
+.signupIntro {
+    padding: 0.15rem 0.1rem 0.25rem;
 }
 
-.googleBox,
-.facebookBox,
-.instagramBox {
-    border: 1px solid white;
-    max-width: 25rem;
-    border-radius: 10px;
+.signupIntro p,
+.signupIntro h1 {
+    margin: 0;
+}
+
+.signupIntro p {
+    color: var(--accent);
+    font-size: 0.78rem;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.signupIntro h1 {
+    margin-top: 0.2rem;
+    color: var(--text);
+    font-size: clamp(2.15rem, 10vw, 3.2rem);
+    line-height: 1;
+    font-weight: 900;
+}
+
+.oauthBox {
+    width: 100%;
+    min-height: 3.65rem;
     display: flex;
     align-items: center;
-    gap: 20px;
-    padding-left: 20px;
-    background-color: transparent;
-    color: white;
-    font-weight: 1000;
+    gap: 1rem;
+    padding: 0 1.1rem;
+    border: 1px solid var(--line);
+    border-radius: 0.95rem;
+    background-color: rgba(255, 255, 255, 0.045);
+    color: var(--text);
+    font: inherit;
+    font-weight: 900;
     cursor: pointer;
-    min-width: 5rem;
+    transition: transform 140ms ease, background-color 140ms ease, border-color 140ms ease, box-shadow 140ms ease;
+}
+
+.oauthBox p {
+    margin: 0;
+}
+
+.oauthBox:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 16px 28px rgba(0, 0, 0, 0.16);
+}
+
+.googleBox:hover {
+    background-color: var(--google);
+    color: #1f2937;
 }
 
 .facebookBox {
-    border-color: #6976FF;
+    border-color: rgba(105, 118, 255, 0.72);
 }
 
+.facebookBox:hover {
+    background-color: var(--facebook);
+}
 
 .instagramBox {
-    border-color: #F26063;
+    border-color: rgba(242, 96, 99, 0.72);
 }
 
-.header {
-    display: flex;
-    align-items: end;
-    padding: 10px;
-    font-size: x-large;
-    justify-content: center;
+.instagramBox:hover {
+    background-color: var(--instagram);
 }
 
-.loginHeader{
-    display: flex;
-    justify-content: center;
-  }
-
-.loginDir{
-    color: white;
-    border: none; 
-    cursor: pointer;
+.oauthUnavailable {
+    animation: shake 0.38s ease;
 }
 
-.googleImage, .faceImage, .instaImage{
+.oauthImage {
+    width: 2rem;
     height: 2rem;
+    object-fit: contain;
+    flex: 0 0 auto;
 }
 
-.googleBox:hover{
-    transition: 1s ease;
-    background-color: white;
+.loginHeader {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0.4rem 1rem clamp(1rem, 4vh, 2rem);
 }
 
-.facebookBox:hover{
-    transition: 1s ease;
-    background-color: #6976FF;
-    color: #6976FF;
-}
-.instagramBox:hover{
-    transition: 1s ease;
-    background-color: #F26063;
-    color: #F26063
+.loginDir {
+    min-height: 2.4rem;
+    border: none;
+    background-color: transparent;
+    color: var(--text);
+    font: inherit;
+    font-weight: 800;
+    cursor: pointer;
 }
 
+.loginDir span {
+    color: var(--muted);
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+
+    30% {
+        transform: translateX(-4px);
+    }
+
+    60% {
+        transform: translateX(4px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@media (min-width: 760px) {
+    .header {
+        padding-top: 1.5rem;
+    }
+
+    .signupBox {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 420px) {
+    .header {
+        padding-top: 0.85rem;
+        padding-bottom: 0.65rem;
+    }
+
+    .brandMark {
+        font-size: 0.76rem;
+    }
+
+    .chatLogo {
+        width: 1.8rem;
+    }
+
+    .signupBox {
+        gap: 0.75rem;
+        padding: 0.85rem;
+    }
+
+    .oauthBox {
+        min-height: 3.2rem;
+    }
+
+    .loginHeader {
+        padding-bottom: 0.8rem;
+    }
+}

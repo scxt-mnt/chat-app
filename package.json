@@ -14,7 +14,7 @@
     "socket.io-client": "^4.8.1"
   },
   "scripts": {
-    "devs": "nodemon  ./public/server/serverExpress.js -w public/server"
+    "dev": "nodemon  ./public/server/serverExpress.js -w public/server"
   },
   "type": "module"
 }

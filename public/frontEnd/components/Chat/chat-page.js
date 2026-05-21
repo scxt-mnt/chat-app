@@ -70,16 +70,6 @@ fileChooser.addEventListener("change", () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
 document.addEventListener("DOMContentLoaded", async () => {
 
 

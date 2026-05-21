@@ -1,99 +1,50 @@
-@media (min-width: 865px) {
-
-    #main,
-    #loginSection,
-    #loginContainer,
-    #top-design,
-    .welcomeMessage,
-    #chatLogo,
-    .loginHeader {
-        all: unset;
+@media (min-width: 760px) {
+    .main {
+        grid-template-rows: auto 1fr auto;
     }
 
-    #idConvoSymbol,
-    #meChatLogo {
-        display: none;
+    .header {
+        padding-top: 1.5rem;
     }
 
+    .loginBox {
+        padding: 1.25rem;
+    }
+}
 
-
-
-    #main {
-        height: 100vh;
-        width: 100vw;
-        margin: 0;
-        background-color: #1D2A42;
+@media (max-width: 420px) {
+    .main {
+        grid-template-rows: auto 1fr auto;
     }
 
-    #top-design {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
+    .header {
+        padding-top: 0.85rem;
+        padding-bottom: 0.65rem;
     }
 
-
-
-    #main {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        font-family: "Roboto", sans-serif;
-        overflow: hidden;
+    .chatLogo {
+        width: 1.8rem;
     }
 
-    #loginSection {
-        background-color: #5BA3F5;        
-        border-radius: 20rem 0 0 20rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: #1D2A42;
-        padding: 10px 10px 10px 15%;
-        flex-direction: column;
+    .brandMark {
+        font-size: 0.76rem;
     }
 
-    #welcomeMessage {
-        width: 20rem;
-        font-size: 4em;
-        margin-right: 10px;
-        font-family: inherit;
-        color: #5BA3F5;
-        font-weight: 700;
+    .loginBox {
+        gap: 0.75rem;
+        padding: 0.85rem;
     }
 
-    #chatLogo {
-        height: 15rem;
+    .oauthBox {
+        min-height: 3.2rem;
     }
 
-    .chatText {
-        font-size: 5rem;
+    .username,
+    .password {
+        min-height: 3.15rem;
     }
 
-    #username, #password {
-        color: white;
-        font-size: 1em;
-    }
-    .errorSec{
-        color: white;
-        
-    }
-    #loginHeader{
-        width: 100vw;
-        margin-left: 1rem;
-        font-size: 1.2rem;
-    }
-
-    #btn-login{
-        align-self: start;
-    }
-
-    #loginContainer{
-        display: block;
-        width: 100vw;
-    } 
-    
-
-    .forgotHeader{
-        align-self: end;
+    .signupHeader {
+        padding-bottom: 0.8rem;
     }
 }

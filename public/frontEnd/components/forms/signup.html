@@ -5,36 +5,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign up</title>
-    <link href="../../styles/signup.css" rel="stylesheet" />
+    <link href="../../styles/signup.css" rel="stylesheet">
 </head>
 
 <body>
     <main class="main">
         <section class="header">
-                <h1>Sign up</h1>
+            <div class="brandMark">
+                <img class="chatLogo"
+                    src="https://res.cloudinary.com/doan4g4r9/image/upload/v1758112824/white_on_black-removebg-preview_iiul19.png"
+                    alt="Me Chat">
+                <span>Me Chat</span>
+            </div>
         </section>
+
         <section class="signupSection">
             <div class="signupBox">
-                <button class="googleBox">
-                    <img class="googleImage"
-                        src="https://res.cloudinary.com/doan4g4r9/image/upload/v1760085309/48131_ess0xo.png" />
+                <div class="signupIntro">
+                    <p>Start chatting</p>
+                    <h1>Sign up</h1>
+                </div>
+
+                <button type="button" class="oauthBox googleBox">
+                    <img class="oauthImage googleImage"
+                        src="https://res.cloudinary.com/doan4g4r9/image/upload/v1760085309/48131_ess0xo.png"
+                        alt="">
                     <p>Google</p>
                 </button>
-                <button class="facebookBox">
-                    <img class="faceImage"
-                        src="https://res.cloudinary.com/doan4g4r9/image/upload/v1760086148/185-1854464_facebook-logo-png-transparent-background-removebg-preview_1_uwiru7.png" />
+                <button type="button" class="oauthBox facebookBox">
+                    <img class="oauthImage faceImage"
+                        src="https://res.cloudinary.com/doan4g4r9/image/upload/v1760086148/185-1854464_facebook-logo-png-transparent-background-removebg-preview_1_uwiru7.png"
+                        alt="">
                     <p>Facebook</p>
                 </button>
-                <button class="instagramBox">
-                    <img class="instaImage"
-                        src="https://res.cloudinary.com/doan4g4r9/image/upload/v1760085257/logo-instagram-116587966427mvdfvahmo-removebg-preview_n9he3l.png" />
-                    <p>instagram</p>
+                <button type="button" class="oauthBox instagramBox">
+                    <img class="oauthImage instaImage"
+                        src="https://res.cloudinary.com/doan4g4r9/image/upload/v1760085257/logo-instagram-116587966427mvdfvahmo-removebg-preview_n9he3l.png"
+                        alt="">
+                    <p>Instagram</p>
                 </button>
             </div>
         </section>
+
         <section class="loginHeader">
-            <button style="height: 2rem; background-color: transparent;" class="loginDir">Already have account? <span
-                    style="opacity:50%;">Login</span></button>
+            <button type="button" class="loginDir">Already have an account? <span>Login</span></button>
         </section>
     </main>
     <script type="module" src="./signup.js"></script>
